@@ -1,8 +1,13 @@
-const express = require('express');
+const express = require("express");
+const productCategories = require("./Routes/productCategory");
 const app = express();
 
-const PORT = 5001;
+app.use("/productCategories",productCategories);
 
-const server = app.listen(PORT,()=>{
-    console.log("App is running on the post - 5001");
-})
+
+
+// // // // // // // 
+const PORT = 5001
+app.listen(PORT, () => {
+    console.log("Server running on port 5000");
+});
