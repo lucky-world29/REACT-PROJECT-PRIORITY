@@ -9,9 +9,9 @@ const Products = ()=>{
     return(
         <div className='products-container'>
             {
-                productData.map((product,key)=>{
+                productData.map((product,index)=>{
                     return(
-                        <div className='mx-5 p-3 product-card'>
+                        <div className='mx-5 p-3 product-card' key={product.id || index}>
                             <div className='product-image-container'>
                                 <img src={require('../../assets/images/shop/'+product.img)}/>
                             </div>
