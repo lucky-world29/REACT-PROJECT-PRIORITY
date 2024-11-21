@@ -6,16 +6,20 @@ import { getProducts } from '../../Redux/Product/productAction';
 
 const Products = ()=>{
     
-    const productData = useSelector(productSlice.getInitialState) || [];
-    // console.log(productData);
-    const cart = useSelector(state => state.cr);
+    const productData = useSelector(state => state.pr.products); //
+    
+    console.log("ProductData - "); 
+    console.log(productData);
+
+
+    const cart = useSelector(state => state.cr); //
     const dispatch = useDispatch;
 
     console.log(cart);
     
 
     // useEffect(()=>{
-    //     dispatch(getProducts());
+    //     dispatch(getProducts);
     // },[]);
 
     const addToCart = (itemData)=>{
@@ -29,7 +33,7 @@ const Products = ()=>{
     return(
         <div className='products-container'>
             {
-                productData.products.map((product,index)=>{
+                productData.map((product,index)=>{
                     return(
                         <div className='mx-5 p-3 product-card' key={product.id || index}>
                             <div className='product-image-container'>
