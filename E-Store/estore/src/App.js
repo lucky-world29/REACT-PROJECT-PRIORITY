@@ -1,4 +1,4 @@
-import  TopNav  from "./Components/TopNav/TopNav";
+import  TopNav  from "./Components/TopNav";
 import './App.css';
 import CatNav from "./Components/CatNav";
 import MainComponent from "./Components/MainComponent";
