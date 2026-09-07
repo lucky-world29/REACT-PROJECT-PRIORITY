@@ -1,177 +1,24 @@
-import React, { useMemo, CSSProperties, Suspense } from 'react';
-import { Translate, useGetList } from 'react-admin';
-import {
-    useMediaQuery,
-    Theme,
-    Skeleton,
-    Card,
-    CardHeader,
-    CardContent,
-} from '@mui/material';
-import { subDays, startOfDay } from 'date-fns';
+import { ArrowUpwardRounded, CheckCircleRounded, FolderRounded, MoreHorizRounded, PeopleAltRounded, TaskAltRounded } from '@mui/icons-material';
+import { Box, Card, CardContent, Chip, LinearProgress, Stack, Typography } from '@mui/material';
+import { Area, AreaChart, ResponsiveContainer, Tooltip, XAxis } from 'recharts';
+import { useTheme } from '@mui/material/styles';
+import { useDemoList } from '../hooks/useDemoQuery';
+import { employeeService, projectService, taskService } from '../services';
+import type { Employee, Project, Task } from '../domain/models';
 
-import Welcome from './Welcome';
-import MonthlyRevenue from './MonthlyRevenue';
-import NbNewOrders from './NbNewOrders';
-import PendingOrders from './PendingOrders';
-import PendingReviews from './PendingReviews';
-import NewCustomers from './NewCustomers';
-
-import { Order } from '../types';
-
-interface OrderStats {
-    revenue: number;
-    nbNewOrders: number;
-    pendingOrders: Order[];
-}
-
-interface State {
-    nbNewOrders?: number;
-    pendingOrders?: Order[];
-    recentOrders?: Order[];
-    revenue?: string;
-}
-
-const styles = {
-    flex: { display: 'flex' },
-    flexColumn: { display: 'flex', flexDirection: 'column' },
-    leftCol: { flex: 1, marginRight: '0.5em' },
-    rightCol: { flex: 1, marginLeft: '0.5em' },
-    singleCol: { marginTop: '1em', marginBottom: '1em' },
-};
-
-const Spacer = () => <span style={{ width: '1em' }} />;
-const VerticalSpacer = () => <span style={{ height: '1em' }} />;
-
-const OrderChart = React.lazy(() => import('./OrderChart'));
+const trend = [{ value: 28 }, { value: 36 }, { value: 33 }, { value: 49 }, { value: 45 }, { value: 62 }, { value: 58 }];
+const Kpi = ({ label, value, caption, icon }: { label: string; value: number; caption: string; icon: React.ReactNode }) => <Card sx={{ height: '100%' }}><CardContent sx={{ p: 2.5 }}><Box sx={{ display: 'flex', justifyContent: 'space-between' }}><Box><Typography color="text.secondary" fontSize={13} fontWeight={600}>{label}</Typography><Typography fontSize={30} fontWeight={800} sx={{ mt: 0.75 }}>{value}</Typography><Typography color="success.main" fontSize={12} sx={{ mt: 0.75 }}><ArrowUpwardRounded sx={{ fontSize: 13, verticalAlign: 'text-bottom' }} /> {caption}</Typography></Box><Box sx={{ height: 42, width: 42, display: 'grid', placeItems: 'center', borderRadius: 2.5, color: 'primary.main', bgcolor: 'primary.light' }}>{icon}</Box></Box></CardContent></Card>;
 
 const Dashboard = () => {
-    const isXSmall = useMediaQuery((theme: Theme) =>
-        theme.breakpoints.down('sm')
-    );
-    const isSmall = useMediaQuery((theme: Theme) =>
-        theme.breakpoints.down('lg')
-    );
-    const aMonthAgo = useMemo(() => subDays(startOfDay(new Date()), 30), []);
-
-    const { data: orders } = useGetList<Order>('orders', {
-        filter: { date_gte: aMonthAgo.toISOString() },
-        sort: { field: 'date', order: 'DESC' },
-        pagination: { page: 1, perPage: 50 },
-    });
-
-    const aggregation = useMemo<State>(() => {
-        if (!orders) return {};
-        const aggregations = orders
-            .filter(order => order.status !== 'cancelled')
-            .reduce(
-                (stats: OrderStats, order) => {
-                    if (order.status !== 'cancelled') {
-                        stats.revenue += order.total;
-                        stats.nbNewOrders++;
-                    }
-                    if (order.status === 'ordered') {
-                        stats.pendingOrders.push(order);
-                    }
-                    return stats;
-                },
-                {
-                    revenue: 0,
-                    nbNewOrders: 0,
-                    pendingOrders: [],
-                }
-            );
-        return {
-            recentOrders: orders,
-            revenue: aggregations.revenue.toLocaleString(undefined, {
-                style: 'currency',
-                currency: 'USD',
-                minimumFractionDigits: 0,
-                maximumFractionDigits: 0,
-            }),
-            nbNewOrders: aggregations.nbNewOrders,
-            pendingOrders: aggregations.pendingOrders,
-        };
-    }, [orders]);
-
-    const { nbNewOrders, pendingOrders, revenue, recentOrders } = aggregation;
-    return isXSmall ? (
-        <div>
-            <div style={styles.flexColumn as CSSProperties}>
-                <Welcome />
-                <MonthlyRevenue value={revenue} />
-                <VerticalSpacer />
-                <NbNewOrders value={nbNewOrders} />
-                <VerticalSpacer />
-                <PendingOrders orders={pendingOrders} />
-            </div>
-        </div>
-    ) : isSmall ? (
-        <div style={styles.flexColumn as CSSProperties}>
-            <div style={styles.singleCol}>
-                <Welcome />
-            </div>
-            <div style={styles.flex}>
-                <MonthlyRevenue value={revenue} />
-                <Spacer />
-                <NbNewOrders value={nbNewOrders} />
-            </div>
-            <div style={styles.singleCol}>
-                <Card>
-                    <CardHeader
-                        title={
-                            <Translate i18nKey="pos.dashboard.month_history" />
-                        }
-                    />
-                    <CardContent>
-                        <Suspense fallback={<Skeleton height={300} />}>
-                            <OrderChart orders={recentOrders} />
-                        </Suspense>
-                    </CardContent>
-                </Card>
-            </div>
-            <div style={styles.singleCol}>
-                <PendingOrders orders={pendingOrders} />
-            </div>
-        </div>
-    ) : (
-        <>
-            <Welcome />
-            <div style={styles.flex}>
-                <div style={styles.leftCol}>
-                    <div style={styles.flex}>
-                        <MonthlyRevenue value={revenue} />
-                        <Spacer />
-                        <NbNewOrders value={nbNewOrders} />
-                    </div>
-                    <div style={styles.singleCol}>
-                        <Card>
-                            <CardHeader
-                                title={
-                                    <Translate i18nKey="pos.dashboard.month_history" />
-                                }
-                            />
-                            <CardContent>
-                                <Suspense fallback={<Skeleton height={300} />}>
-                                    <OrderChart orders={recentOrders} />
-                                </Suspense>
-                            </CardContent>
-                        </Card>
-                    </div>
-                    <div style={styles.singleCol}>
-                        <PendingOrders orders={pendingOrders} />
-                    </div>
-                </div>
-                <div style={styles.rightCol}>
-                    <div style={styles.flex}>
-                        <PendingReviews />
-                        <Spacer />
-                        <NewCustomers />
-                    </div>
-                </div>
-            </div>
-        </>
-    );
+    const theme = useTheme();
+    const { data: employees = [] } = useDemoList<Employee>('employees', employeeService.getAll);
+    const { data: projects = [] } = useDemoList<Project>('projects', projectService.getAll);
+    const { data: tasks = [] } = useDemoList<Task>('tasks', taskService.getAll);
+    return <Box sx={{ p: { xs: 2, md: 4 } }}>
+        <Box sx={{ display: 'flex', justifyContent: 'space-between', gap: 2, flexWrap: 'wrap', mb: 3.5 }}><Box><Typography variant="h4" fontWeight={800}>Good morning, Admin</Typography><Typography color="text.secondary" sx={{ mt: 0.5 }}>Here’s what’s happening across Priority today.</Typography></Box><Chip label="September 2026" color="primary" variant="outlined" /></Box>
+        <Box sx={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(210px, 1fr))', gap: 2 }}><Kpi label="Total employees" value={employees.length} caption="12% from last month" icon={<PeopleAltRounded />} /><Kpi label="Active projects" value={projects.length} caption="8% from last month" icon={<FolderRounded />} /><Kpi label="Open tasks" value={tasks.filter(task => task.status !== 'Done').length} caption="4 completed this week" icon={<TaskAltRounded />} /><Kpi label="Pending approvals" value={2} caption="1 needs attention" icon={<CheckCircleRounded />} /></Box>
+        <Box sx={{ display: 'grid', gridTemplateColumns: { xs: '1fr', lg: '1.55fr 1fr' }, gap: 2, mt: 2 }}><Card><CardContent sx={{ p: 3 }}><Box sx={{ display: 'flex', justifyContent: 'space-between', mb: 2 }}><Box><Typography fontWeight={800}>Operational performance</Typography><Typography color="text.secondary" fontSize={12}>Team momentum over the last seven days</Typography></Box><Chip label="+18.4%" size="small" color="success" /></Box><Box sx={{ height: 260 }}><ResponsiveContainer><AreaChart data={trend}><defs><linearGradient id="performance" x1="0" x2="0" y1="0" y2="1"><stop offset="0%" stopColor={theme.palette.primary.main} stopOpacity={0.32} /><stop offset="100%" stopColor={theme.palette.primary.main} stopOpacity={0} /></linearGradient></defs><XAxis dataKey="value" hide /><Tooltip /><Area dataKey="value" stroke={theme.palette.primary.main} strokeWidth={3} fill="url(#performance)" /></AreaChart></ResponsiveContainer></Box></CardContent></Card><Card><CardContent sx={{ p: 3 }}><Typography fontWeight={800}>Project health</Typography><Typography color="text.secondary" fontSize={12} sx={{ mb: 3 }}>Progress across active initiatives</Typography><Stack spacing={2.5}>{projects.map(project => <Box key={project.id}><Box sx={{ display: 'flex', justifyContent: 'space-between', mb: 0.75 }}><Typography fontSize={13} fontWeight={700}>{project.name}</Typography><Typography fontSize={13} color="text.secondary">{project.progress}%</Typography></Box><LinearProgress value={project.progress} variant="determinate" sx={{ height: 8, borderRadius: 8, bgcolor: 'primary.light', '& .MuiLinearProgress-bar': { bgcolor: 'primary.main', borderRadius: 8 } }} /></Box>)}</Stack></CardContent></Card></Box>
+        <Box sx={{ display: 'grid', gridTemplateColumns: { xs: '1fr', lg: '1.2fr .8fr' }, gap: 2, mt: 2 }}><Card><CardContent sx={{ p: 3 }}><Box sx={{ display: 'flex', justifyContent: 'space-between', mb: 2.5 }}><Box><Typography fontWeight={800}>Current priorities</Typography><Typography color="text.secondary" fontSize={12}>Work requiring attention</Typography></Box><MoreHorizRounded color="action" /></Box><Stack spacing={1}>{tasks.map(task => <Box key={task.id} sx={{ display: 'flex', p: 1.25, borderRadius: 2, bgcolor: 'action.hover', justifyContent: 'space-between', gap: 2 }}><Box><Typography fontSize={13} fontWeight={700}>{task.title}</Typography><Typography color="text.secondary" fontSize={12}>{task.project} · {task.assignee}</Typography></Box><Chip size="small" label={task.priority} color={task.priority === 'High' ? 'error' : 'warning'} /></Box>)}</Stack></CardContent></Card><Card><CardContent sx={{ p: 3 }}><Typography fontWeight={800}>Team availability</Typography><Typography color="text.secondary" fontSize={12} sx={{ mb: 2.5 }}>Today’s workforce snapshot</Typography><Stack spacing={1.5}>{[['Available', employees.length], ['In meetings', 1], ['On leave', 0]].map(([label, value]) => <Box key={String(label)} sx={{ display: 'flex', justifyContent: 'space-between' }}><Typography color="text.secondary" fontSize={13}>{label}</Typography><Typography fontWeight={800}>{value}</Typography></Box>)}</Stack><Box sx={{ mt: 3, p: 1.75, borderRadius: 2.5, bgcolor: 'primary.light' }}><Typography color="primary.main" fontSize={12} fontWeight={700}>Workforce utilization</Typography><Typography fontSize={26} fontWeight={800}>84%</Typography></Box></CardContent></Card></Box>
+    </Box>;
 };
-
 export default Dashboard;
