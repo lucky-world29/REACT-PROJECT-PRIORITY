@@ -1,0 +1,952 @@
+/* =========================================
+   BOOKING PAGE
+========================================= */
+
+.booking-page {
+  min-height: 100vh;
+
+  padding-top: 115px;
+  padding-bottom: 80px;
+
+  position: relative;
+  overflow: hidden;
+
+  background:
+    radial-gradient(
+      circle at 85% 10%,
+      rgba(0, 174, 220, 0.14),
+      transparent 30%
+    ),
+    radial-gradient(
+      circle at 5% 80%,
+      rgba(91, 101, 238, 0.1),
+      transparent 30%
+    ),
+    #f7fbff;
+
+  color: #153b56;
+}
+
+/* =========================================
+   BACKGROUND ORBS
+========================================= */
+
+.booking-orb {
+  position: absolute;
+
+  border-radius: 50%;
+
+  pointer-events: none;
+
+  filter: blur(2px);
+}
+
+.booking-orb-1 {
+  width: 350px;
+  height: 350px;
+
+  top: 150px;
+  right: -180px;
+
+  background: rgba(0, 176, 220, 0.1);
+
+  animation: bookingFloat 8s ease-in-out infinite;
+}
+
+.booking-orb-2 {
+  width: 250px;
+  height: 250px;
+
+  bottom: 100px;
+  left: -130px;
+
+  background: rgba(80, 90, 230, 0.08);
+
+  animation: bookingFloat 10s ease-in-out infinite reverse;
+}
+
+@keyframes bookingFloat {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-30px);
+  }
+}
+
+/* =========================================
+   CONTAINER
+========================================= */
+
+.booking-container {
+  position: relative;
+  z-index: 2;
+}
+
+/* =========================================
+   BACK BUTTON
+========================================= */
+
+.back-doctors {
+  display: inline-flex;
+
+  align-items: center;
+
+  color: #688496;
+
+  text-decoration: none;
+
+  font-size: 13px;
+  font-weight: 650;
+
+  margin-bottom: 30px;
+
+  transition: all 0.3s ease;
+}
+
+.back-doctors:hover {
+  color: #078bb6;
+
+  transform: translateX(-4px);
+}
+
+/* =========================================
+   HEADING
+========================================= */
+
+.booking-heading {
+  margin-bottom: 45px;
+}
+
+.booking-heading span {
+  color: #078db8;
+
+  font-size: 11px;
+
+  font-weight: 800;
+
+  letter-spacing: 3px;
+}
+
+.booking-heading h1 {
+  margin: 10px 0;
+
+  color: #0c2f4c;
+
+  font-size: clamp(35px, 5vw, 55px);
+
+  font-weight: 800;
+
+  letter-spacing: -2px;
+}
+
+.booking-heading h1 strong {
+  background:
+    linear-gradient(
+      90deg,
+      #078bd2,
+      #08b7c7,
+      #5865e8
+    );
+
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.booking-heading p {
+  max-width: 600px;
+
+  color: #728a9c;
+
+  line-height: 1.7;
+
+  font-size: 16px;
+}
+
+/* =========================================
+   DOCTOR PREVIEW
+========================================= */
+
+.doctor-preview {
+  position: relative;
+
+  padding: 35px 28px;
+
+  border-radius: 27px;
+
+  text-align: center;
+
+  background:
+    linear-gradient(
+      145deg,
+      rgba(255, 255, 255, 0.96),
+      rgba(237, 250, 255, 0.92)
+    );
+
+  border: 1px solid rgba(24, 143, 185, 0.12);
+
+  box-shadow:
+    0 25px 60px rgba(35, 110, 145, 0.12);
+
+  overflow: hidden;
+
+  transition:
+    transform 0.4s ease,
+    box-shadow 0.4s ease;
+}
+
+.doctor-preview:hover {
+  transform:
+    translateY(-8px)
+    rotateX(1deg);
+
+  box-shadow:
+    0 35px 70px rgba(35, 110, 145, 0.17);
+}
+
+/* =========================================
+   DOCTOR GLOW
+========================================= */
+
+.doctor-preview-glow {
+  position: absolute;
+
+  width: 220px;
+  height: 220px;
+
+  top: -120px;
+  right: -80px;
+
+  border-radius: 50%;
+
+  background:
+    radial-gradient(
+      circle,
+      rgba(0, 180, 220, 0.15),
+      transparent 70%
+    );
+}
+
+/* =========================================
+   LARGE AVATAR
+========================================= */
+
+.large-doctor-avatar {
+  width: 130px;
+  height: 130px;
+
+  margin: 0 auto 20px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 38px;
+
+  font-size: 65px;
+
+  background:
+    linear-gradient(
+      145deg,
+      #e2f7ff,
+      #c8edf9
+    );
+
+  box-shadow:
+    inset -15px -15px 25px rgba(0, 125, 170, 0.08),
+    0 20px 40px rgba(0, 130, 170, 0.14);
+
+  animation: avatarFloat 5s ease-in-out infinite;
+
+  transform-style: preserve-3d;
+}
+
+@keyframes avatarFloat {
+  0%,
+  100% {
+    transform: translateY(0) rotateY(-3deg);
+  }
+
+  50% {
+    transform: translateY(-9px) rotateY(3deg);
+  }
+}
+
+/* =========================================
+   AVAILABLE
+========================================= */
+
+.available-badge {
+  display: inline-flex;
+
+  align-items: center;
+
+  gap: 7px;
+
+  padding: 7px 12px;
+
+  border-radius: 50px;
+
+  background: #e7fbf3;
+
+  color: #09966a;
+
+  font-size: 10px;
+
+  font-weight: 750;
+
+  margin-bottom: 17px;
+}
+
+.available-badge span {
+  width: 7px;
+  height: 7px;
+
+  border-radius: 50%;
+
+  background: #0bc787;
+
+  animation: availablePulse 1.7s infinite;
+}
+
+@keyframes availablePulse {
+  0% {
+    box-shadow: 0 0 0 0 rgba(11, 199, 135, 0.5);
+  }
+
+  70% {
+    box-shadow: 0 0 0 8px rgba(11, 199, 135, 0);
+  }
+
+  100% {
+    box-shadow: 0 0 0 0 rgba(11, 199, 135, 0);
+  }
+}
+
+/* =========================================
+   DOCTOR TEXT
+========================================= */
+
+.doctor-preview h2 {
+  margin: 0;
+
+  color: #153b56;
+
+  font-size: 23px;
+
+  font-weight: 800;
+}
+
+.doctor-speciality {
+  color: #078db7;
+
+  margin: 5px 0 10px;
+
+  font-size: 14px;
+
+  font-weight: 650;
+}
+
+/* =========================================
+   RATING
+========================================= */
+
+.doctor-rating {
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  gap: 7px;
+
+  margin-bottom: 25px;
+}
+
+.doctor-rating span {
+  color: #f3b43c;
+
+  letter-spacing: 2px;
+
+  font-size: 12px;
+}
+
+.doctor-rating strong {
+  color: #3c5669;
+
+  font-size: 13px;
+}
+
+.doctor-rating small {
+  color: #8ca0ae;
+
+  font-size: 10px;
+}
+
+/* =========================================
+   DOCTOR INFO
+========================================= */
+
+.doctor-info-list {
+  display: flex;
+
+  flex-direction: column;
+
+  gap: 9px;
+
+  text-align: left;
+}
+
+.doctor-info-list > div {
+  display: flex;
+
+  align-items: center;
+
+  gap: 12px;
+
+  padding: 12px;
+
+  border-radius: 13px;
+
+  background: rgba(241, 250, 253, 0.8);
+
+  transition: all 0.3s ease;
+}
+
+.doctor-info-list > div:hover {
+  transform: translateX(5px);
+
+  background: #e7f7fc;
+}
+
+.doctor-info-list > div > span {
+  width: 38px;
+  height: 38px;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 10px;
+
+  background: white;
+
+  font-size: 17px;
+}
+
+.doctor-info-list small {
+  display: block;
+
+  color: #8ba0ae;
+
+  font-size: 9px;
+}
+
+.doctor-info-list strong {
+  display: block;
+
+  color: #36566b;
+
+  font-size: 12px;
+
+  margin-top: 2px;
+}
+
+/* =========================================
+   DOCTOR ID
+========================================= */
+
+.doctor-id {
+  margin-top: 20px;
+
+  color: #91a4b1;
+
+  font-size: 10px;
+}
+
+.doctor-id strong {
+  color: #688494;
+}
+
+/* =========================================
+   BOOKING CARD
+========================================= */
+
+.booking-card {
+  padding: 35px;
+
+  border-radius: 27px;
+
+  background: rgba(255, 255, 255, 0.92);
+
+  border: 1px solid rgba(30, 135, 175, 0.1);
+
+  box-shadow:
+    0 25px 65px rgba(30, 105, 140, 0.1);
+}
+
+/* =========================================
+   BOOKING SECTION
+========================================= */
+
+.booking-section {
+  padding-bottom: 30px;
+
+  margin-bottom: 30px;
+
+  border-bottom: 1px solid #edf3f6;
+}
+
+.booking-section-title {
+  display: flex;
+
+  align-items: center;
+
+  gap: 14px;
+
+  margin-bottom: 23px;
+}
+
+.section-number {
+  width: 38px;
+  height: 38px;
+
+  flex-shrink: 0;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 11px;
+
+  background:
+    linear-gradient(
+      135deg,
+      #e5f8ff,
+      #eaf5ff
+    );
+
+  color: #078bb6;
+
+  font-size: 11px;
+
+  font-weight: 800;
+}
+
+.booking-section-title h3 {
+  margin: 0;
+
+  color: #183d57;
+
+  font-size: 17px;
+
+  font-weight: 800;
+}
+
+.booking-section-title p {
+  margin: 3px 0 0;
+
+  color: #8a9eab;
+
+  font-size: 11px;
+}
+
+/* =========================================
+   FORM
+========================================= */
+
+.booking-card label {
+  display: block;
+
+  margin-bottom: 7px;
+
+  color: #456176;
+
+  font-size: 11px;
+
+  font-weight: 700;
+}
+
+.booking-card label span {
+  color: #e85d5d;
+}
+
+.booking-card input,
+.booking-card select {
+  width: 100%;
+
+  height: 48px;
+
+  padding: 0 14px;
+
+  border-radius: 11px;
+
+  border: 1px solid #dfebf0;
+
+  outline: none;
+
+  background: #fafdfe;
+
+  color: #315269;
+
+  font-size: 13px;
+
+  transition:
+    border-color 0.3s ease,
+    box-shadow 0.3s ease,
+    background 0.3s ease;
+}
+
+.booking-card input:focus,
+.booking-card select:focus {
+  background: white;
+
+  border-color: #35afd0;
+
+  box-shadow:
+    0 0 0 4px rgba(35, 170, 205, 0.1);
+}
+
+.booking-card input::placeholder {
+  color: #a5b5bf;
+}
+
+/* =========================================
+   DATE
+========================================= */
+
+.date-wrapper {
+  position: relative;
+}
+
+.date-wrapper > span {
+  position: absolute;
+
+  left: 15px;
+
+  top: 50%;
+
+  transform: translateY(-50%);
+
+  pointer-events: none;
+
+  z-index: 2;
+}
+
+.date-wrapper input {
+  padding-left: 43px;
+}
+
+/* =========================================
+   TIME SLOTS
+========================================= */
+
+.time-grid {
+  display: grid;
+
+  grid-template-columns:
+    repeat(4, 1fr);
+
+  gap: 10px;
+}
+
+.time-slot {
+  height: 45px;
+
+  border-radius: 10px;
+
+  border: 1px solid #dfebf0;
+
+  background: #fafdfe;
+
+  color: #557083;
+
+  font-size: 11px;
+
+  font-weight: 650;
+
+  cursor: pointer;
+
+  transition: all 0.3s ease;
+}
+
+.time-slot:hover {
+  transform: translateY(-3px);
+
+  border-color: #42b5d2;
+
+  color: #078bb6;
+
+  background: #f0fbfe;
+}
+
+.time-slot.selected {
+  color: white;
+
+  border-color: transparent;
+
+  background:
+    linear-gradient(
+      135deg,
+      #0787c2,
+      #08abbf
+    );
+
+  box-shadow:
+    0 10px 20px rgba(0, 145, 190, 0.2);
+
+  transform: translateY(-2px);
+}
+
+/* =========================================
+   SUMMARY
+========================================= */
+
+.appointment-summary {
+  display: grid;
+
+  grid-template-columns:
+    1.2fr 1.5fr 0.8fr;
+
+  gap: 15px;
+
+  padding: 20px;
+
+  margin-bottom: 20px;
+
+  border-radius: 16px;
+
+  background:
+    linear-gradient(
+      120deg,
+      #f1fbfe,
+      #f7faff
+    );
+
+  border: 1px solid #e3f1f6;
+}
+
+.appointment-summary > div {
+  border-right: 1px solid #dfedf2;
+
+  padding-right: 12px;
+}
+
+.appointment-summary > div:last-child {
+  border: none;
+}
+
+.appointment-summary small {
+  display: block;
+
+  color: #8da0ad;
+
+  font-size: 9px;
+
+  margin-bottom: 5px;
+}
+
+.appointment-summary strong {
+  color: #315269;
+
+  font-size: 11px;
+}
+
+/* =========================================
+   CONFIRM BUTTON
+========================================= */
+
+.confirm-booking {
+  width: 100%;
+
+  height: 54px;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  gap: 10px;
+
+  border: none;
+
+  border-radius: 13px;
+
+  color: white;
+
+  background:
+    linear-gradient(
+      135deg,
+      #0787c2,
+      #08abbf,
+      #078fd0
+    );
+
+  font-size: 14px;
+
+  font-weight: 750;
+
+  box-shadow:
+    0 14px 30px rgba(0, 143, 190, 0.23);
+
+  cursor: pointer;
+
+  transition: all 0.35s ease;
+}
+
+.confirm-booking span {
+  width: 23px;
+  height: 23px;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 50%;
+
+  background: rgba(255, 255, 255, 0.18);
+}
+
+.confirm-booking strong {
+  font-size: 19px;
+
+  transition:
+    transform 0.3s ease;
+}
+
+.confirm-booking:hover {
+  transform: translateY(-4px);
+
+  box-shadow:
+    0 20px 38px rgba(0, 143, 190, 0.32);
+}
+
+.confirm-booking:hover strong {
+  transform: translateX(5px);
+}
+
+.secure-text {
+  margin: 13px 0 0;
+
+  text-align: center;
+
+  color: #9aabb6;
+
+  font-size: 10px;
+}
+
+/* =========================================
+   TABLET
+========================================= */
+
+@media (max-width: 991px) {
+
+  .booking-page {
+    padding-top: 100px;
+  }
+
+  .doctor-preview {
+    max-width: 550px;
+
+    margin: 0 auto;
+  }
+
+  .booking-card {
+    margin-top: 10px;
+  }
+}
+
+/* =========================================
+   MOBILE
+========================================= */
+
+@media (max-width: 767px) {
+
+  .booking-page {
+    padding-top: 90px;
+    padding-bottom: 50px;
+  }
+
+  .booking-heading {
+    margin-bottom: 30px;
+  }
+
+  .booking-heading h1 {
+    font-size: 38px;
+  }
+
+  .booking-heading p {
+    font-size: 14px;
+  }
+
+  .doctor-preview {
+    padding: 28px 20px;
+  }
+
+  .booking-card {
+    padding: 23px 18px;
+
+    border-radius: 22px;
+  }
+
+  .time-grid {
+    grid-template-columns:
+      repeat(2, 1fr);
+  }
+
+  .appointment-summary {
+    grid-template-columns: 1fr;
+
+    gap: 13px;
+  }
+
+  .appointment-summary > div {
+    border-right: none;
+
+    border-bottom: 1px solid #dfedf2;
+
+    padding-bottom: 10px;
+  }
+
+  .appointment-summary > div:last-child {
+    border-bottom: none;
+
+    padding-bottom: 0;
+  }
+}
+
+/* =========================================
+   SMALL MOBILE
+========================================= */
+
+@media (max-width: 400px) {
+
+  .booking-heading h1 {
+    font-size: 33px;
+  }
+
+  .booking-section-title h3 {
+    font-size: 15px;
+  }
+
+  .booking-section-title p {
+    font-size: 10px;
+  }
+
+  .section-number {
+    width: 34px;
+    height: 34px;
+  }
+
+  .time-slot {
+    font-size: 10px;
+  }
+
+  .confirm-booking {
+    font-size: 12px;
+  }
+}

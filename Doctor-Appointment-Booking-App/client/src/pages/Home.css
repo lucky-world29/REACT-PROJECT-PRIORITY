@@ -1,0 +1,933 @@
+/* =========================================
+   MAIN
+========================================= */
+
+.doctor-home {
+  min-height: 100vh;
+  background:
+    radial-gradient(circle at 80% 15%, rgba(67, 189, 255, 0.18), transparent 30%),
+    radial-gradient(circle at 10% 50%, rgba(86, 110, 255, 0.12), transparent 30%),
+    #f7fbff;
+  color: #102a43;
+  overflow: hidden;
+  position: relative;
+}
+
+/* =========================================
+   BACKGROUND ORBS
+========================================= */
+
+.bg-orb {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(2px);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.orb-1 {
+  width: 300px;
+  height: 300px;
+  background: rgba(0, 174, 255, 0.12);
+  top: 10%;
+  left: -120px;
+  animation: floatOrb 8s ease-in-out infinite;
+}
+
+.orb-2 {
+  width: 250px;
+  height: 250px;
+  background: rgba(99, 102, 241, 0.1);
+  right: -100px;
+  top: 45%;
+  animation: floatOrb 10s ease-in-out infinite reverse;
+}
+
+.orb-3 {
+  width: 180px;
+  height: 180px;
+  background: rgba(0, 210, 190, 0.1);
+  bottom: 10%;
+  left: 45%;
+  animation: floatOrb 7s ease-in-out infinite;
+}
+
+@keyframes floatOrb {
+  0%,
+  100% {
+    transform: translateY(0) translateX(0);
+  }
+
+  50% {
+    transform: translateY(-30px) translateX(20px);
+  }
+}
+
+/* =========================================
+   HERO
+========================================= */
+
+.hero-section {
+  position: relative;
+  z-index: 2;
+}
+
+.hero-content {
+  padding-top: 40px;
+}
+
+.badge-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  padding: 9px 16px;
+  border-radius: 50px;
+  background: rgba(255, 255, 255, 0.8);
+  border: 1px solid rgba(32, 150, 243, 0.15);
+  box-shadow: 0 10px 30px rgba(32, 100, 150, 0.08);
+  color: #087ea4;
+  font-size: 13px;
+  font-weight: 600;
+  margin-bottom: 25px;
+}
+
+.pulse-dot {
+  width: 8px;
+  height: 8px;
+  background: #00b894;
+  border-radius: 50%;
+  box-shadow: 0 0 0 5px rgba(0, 184, 148, 0.1);
+  animation: pulse 1.8s infinite;
+}
+
+@keyframes pulse {
+  0% {
+    box-shadow: 0 0 0 0 rgba(0, 184, 148, 0.4);
+  }
+
+  70% {
+    box-shadow: 0 0 0 8px rgba(0, 184, 148, 0);
+  }
+
+  100% {
+    box-shadow: 0 0 0 0 rgba(0, 184, 148, 0);
+  }
+}
+
+.hero-content h1 {
+  font-size: clamp(45px, 6vw, 78px);
+  line-height: 1.03;
+  font-weight: 800;
+  letter-spacing: -3px;
+  margin-bottom: 25px;
+  color: #0b2545;
+}
+
+.hero-content h1 span {
+  background: linear-gradient(
+    90deg,
+    #078bd2,
+    #12b5cb,
+    #5865f2
+  );
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.hero-description {
+  max-width: 560px;
+  font-size: 18px;
+  line-height: 1.8;
+  color: #607d95;
+  margin-bottom: 35px;
+}
+
+/* =========================================
+   BUTTONS
+========================================= */
+
+.hero-buttons {
+  display: flex;
+  gap: 15px;
+  flex-wrap: wrap;
+}
+
+.btn-book {
+  border: none;
+  padding: 15px 25px;
+  border-radius: 13px;
+  color: white;
+  font-weight: 700;
+  font-size: 15px;
+  background: linear-gradient(
+    135deg,
+    #087fc1,
+    #00a9c7
+  );
+  box-shadow: 0 12px 25px rgba(0, 145, 200, 0.25);
+  transition: all 0.3s ease;
+  text-decoration: none;
+}
+
+.btn-book:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 18px 35px rgba(0, 145, 200, 0.35);
+}
+
+.btn-explore {
+  padding: 14px 25px;
+  border-radius: 13px;
+  background: white;
+  border: 1px solid #dceaf3;
+  color: #173b59;
+  font-weight: 700;
+  transition: all 0.3s ease;
+  text-decoration: none;
+}
+
+.btn-explore:hover {
+  transform: translateY(-4px);
+  border-color: #62bfe4;
+}
+
+/* =========================================
+   STATS
+========================================= */
+
+.stats-row {
+  display: flex;
+  gap: 45px;
+  margin-top: 55px;
+}
+
+.stats-row div {
+  display: flex;
+  flex-direction: column;
+}
+
+.stats-row strong {
+  font-size: 27px;
+  color: #0c3556;
+}
+
+.stats-row span {
+  color: #7990a3;
+  font-size: 13px;
+  margin-top: 4px;
+}
+
+/* =========================================
+   3D SCENE
+========================================= */
+
+.visual-column {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.medical-scene {
+  width: 560px;
+  height: 600px;
+  position: relative;
+  perspective: 1000px;
+}
+
+.doctor-3d {
+  position: absolute;
+  width: 390px;
+  height: 390px;
+  border-radius: 50%;
+  top: 105px;
+  left: 80px;
+
+  background:
+    radial-gradient(
+      circle at 35% 25%,
+      rgba(255, 255, 255, 0.95),
+      rgba(210, 242, 255, 0.65) 45%,
+      rgba(150, 218, 245, 0.4)
+    );
+
+  box-shadow:
+    inset -25px -25px 60px rgba(46, 160, 210, 0.15),
+    0 35px 80px rgba(20, 130, 180, 0.2);
+
+  transform-style: preserve-3d;
+
+  animation: doctorFloat 5s ease-in-out infinite;
+}
+
+@keyframes doctorFloat {
+  0%,
+  100% {
+    transform: translateY(0) rotateY(-5deg);
+  }
+
+  50% {
+    transform: translateY(-18px) rotateY(5deg);
+  }
+}
+
+.doctor-glow {
+  position: absolute;
+  inset: -30px;
+  border-radius: 50%;
+  border: 1px solid rgba(0, 174, 255, 0.2);
+  animation: rotateRing 12s linear infinite;
+}
+
+@keyframes rotateRing {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* =========================================
+   DOCTOR AVATAR
+========================================= */
+
+.doctor-avatar {
+  position: absolute;
+  left: 105px;
+  top: 45px;
+  width: 180px;
+  height: 300px;
+  transform: translateZ(80px);
+}
+
+.doctor-head {
+  width: 125px;
+  height: 140px;
+  margin: auto;
+  position: relative;
+}
+
+.face {
+  width: 105px;
+  height: 120px;
+  position: absolute;
+  left: 10px;
+  top: 20px;
+  background: linear-gradient(
+    145deg,
+    #ffd6b8,
+    #eeb18e
+  );
+  border-radius: 48% 48% 45% 45%;
+  box-shadow:
+    inset -8px -10px 15px rgba(170, 80, 40, 0.12);
+}
+
+.hair {
+  position: absolute;
+  z-index: 2;
+  width: 115px;
+  height: 75px;
+  left: 4px;
+  top: 5px;
+  border-radius: 60% 60% 20% 20%;
+  background: #293b52;
+}
+
+.eye {
+  width: 8px;
+  height: 8px;
+  background: #273746;
+  border-radius: 50%;
+  position: absolute;
+  top: 58px;
+}
+
+.eye-left {
+  left: 25px;
+}
+
+.eye-right {
+  right: 25px;
+}
+
+.smile {
+  position: absolute;
+  width: 28px;
+  height: 13px;
+  border-bottom: 3px solid #b55c57;
+  border-radius: 50%;
+  bottom: 25px;
+  left: 39px;
+}
+
+/* Body */
+
+.doctor-body {
+  width: 180px;
+  height: 180px;
+  margin-top: -5px;
+  border-radius: 55px 55px 15px 15px;
+  background: linear-gradient(
+    145deg,
+    #ffffff,
+    #d9edf7
+  );
+  box-shadow:
+    inset -15px -10px 20px rgba(50, 130, 170, 0.1),
+    0 20px 30px rgba(0, 100, 150, 0.12);
+  position: relative;
+}
+
+.stethoscope {
+  position: absolute;
+  width: 70px;
+  height: 100px;
+  left: 55px;
+  top: 15px;
+  border: 4px solid #1688b8;
+  border-top: none;
+  border-radius: 0 0 45px 45px;
+}
+
+.stethoscope span:first-child {
+  position: absolute;
+  width: 13px;
+  height: 13px;
+  border-radius: 50%;
+  background: #1688b8;
+  bottom: -8px;
+  left: 25px;
+}
+
+.stethoscope span:last-child {
+  position: absolute;
+  width: 7px;
+  height: 35px;
+  background: #1688b8;
+  top: -18px;
+  left: 30px;
+}
+
+.coat-pocket {
+  position: absolute;
+  right: 25px;
+  bottom: 25px;
+  width: 35px;
+  height: 40px;
+  border: 2px solid #a9c9d8;
+  border-radius: 0 0 8px 8px;
+  color: #08a2bf;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 20px;
+}
+
+/* =========================================
+   FLOATING MEDICAL ICONS
+========================================= */
+
+.floating-icon {
+  position: absolute;
+  width: 58px;
+  height: 58px;
+  border-radius: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(255, 255, 255, 0.9);
+  backdrop-filter: blur(10px);
+  box-shadow: 0 15px 30px rgba(35, 100, 140, 0.15);
+  font-size: 25px;
+  animation: iconFloat 4s ease-in-out infinite;
+}
+
+.icon-heart {
+  top: 35px;
+  right: 40px;
+}
+
+.icon-cross {
+  left: 15px;
+  top: 150px;
+  color: #08a8bd;
+  font-size: 30px;
+  animation-delay: 1s;
+}
+
+.icon-plus {
+  right: 5px;
+  bottom: 70px;
+  color: #168dcc;
+  font-size: 30px;
+  animation-delay: 2s;
+}
+
+.icon-health {
+  left: 20px;
+  bottom: 55px;
+  animation-delay: 0.5s;
+}
+
+@keyframes iconFloat {
+  0%,
+  100% {
+    transform: translateY(0) translateZ(40px);
+  }
+
+  50% {
+    transform: translateY(-15px) translateZ(70px);
+  }
+}
+
+/* =========================================
+   FLOATING CARDS
+========================================= */
+
+.floating-card {
+  position: absolute;
+  z-index: 5;
+  background: rgba(255, 255, 255, 0.86);
+  backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.9);
+  border-radius: 18px;
+  padding: 15px 18px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  box-shadow: 0 20px 45px rgba(31, 92, 130, 0.15);
+}
+
+.floating-card small {
+  display: block;
+  color: #8298a8;
+  font-size: 11px;
+  margin-bottom: 4px;
+}
+
+.floating-card strong {
+  display: block;
+  font-size: 13px;
+  color: #193d58;
+}
+
+.appointment-card {
+  top: 65px;
+  left: 0;
+  animation: cardFloat 4s ease-in-out infinite;
+}
+
+.card-icon {
+  width: 43px;
+  height: 43px;
+  border-radius: 12px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #e3f6ff;
+  font-size: 20px;
+}
+
+.rating-card {
+  bottom: 85px;
+  right: 0;
+  animation: cardFloat 5s ease-in-out infinite reverse;
+}
+
+.rating-avatar {
+  width: 45px;
+  height: 45px;
+  background: #e5f6ff;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 24px;
+}
+
+.stars {
+  font-size: 10px;
+  color: #f2b84b;
+  margin-top: 4px;
+}
+
+.stars span {
+  color: #8298a8;
+}
+
+.success-card {
+  top: 220px;
+  right: -20px;
+  animation: cardFloat 4.5s ease-in-out infinite;
+}
+
+.success-check {
+  width: 40px;
+  height: 40px;
+  background: #ddf8ed;
+  color: #00a878;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  font-size: 20px;
+}
+
+@keyframes cardFloat {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-12px);
+  }
+}
+
+/* =========================================
+   SERVICES
+========================================= */
+
+.services-section {
+  position: relative;
+  z-index: 2;
+  padding: 100px 0;
+  background: white;
+}
+
+.section-heading {
+  text-align: center;
+  margin-bottom: 55px;
+}
+
+.section-heading span {
+  font-size: 12px;
+  font-weight: 800;
+  color: #078bb6;
+  letter-spacing: 3px;
+}
+
+.section-heading h2 {
+  font-size: clamp(32px, 4vw, 48px);
+  font-weight: 800;
+  color: #0c2f4c;
+  margin: 12px 0;
+}
+
+.section-heading p {
+  color: #71889a;
+}
+
+.service-card {
+  height: 100%;
+  padding: 35px;
+  border-radius: 24px;
+  background: #f8fcff;
+  border: 1px solid #e5f1f7;
+  transition: all 0.4s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.service-card::after {
+  content: "";
+  position: absolute;
+  width: 100px;
+  height: 100px;
+  right: -50px;
+  top: -50px;
+  border-radius: 50%;
+  background: rgba(0, 169, 220, 0.08);
+}
+
+.service-card:hover {
+  transform: translateY(-10px) rotateX(3deg);
+  box-shadow: 0 25px 50px rgba(29, 107, 146, 0.13);
+}
+
+.featured-service {
+  background: linear-gradient(
+    145deg,
+    #eafaff,
+    #f8fdff
+  );
+}
+
+.service-icon {
+  width: 65px;
+  height: 65px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: white;
+  border-radius: 18px;
+  font-size: 28px;
+  margin-bottom: 25px;
+  box-shadow: 0 10px 25px rgba(40, 120, 160, 0.1);
+}
+
+.service-card h3 {
+  font-weight: 750;
+  color: #153b57;
+}
+
+.service-card p {
+  color: #738a9b;
+  line-height: 1.7;
+  margin: 15px 0 22px;
+}
+
+.service-card a {
+  color: #078bb6;
+  text-decoration: none;
+  font-weight: 700;
+  font-size: 14px;
+}
+
+/* =========================================
+   CTA
+========================================= */
+
+.cta-section {
+  padding: 90px 12px;
+}
+
+.cta-box {
+  padding: 55px;
+  border-radius: 30px;
+  color: white;
+  background:
+    radial-gradient(circle at 90% 20%, rgba(255,255,255,0.2), transparent 30%),
+    linear-gradient(120deg, #087fc1, #00a8bd, #5865e8);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 30px;
+  box-shadow: 0 25px 60px rgba(0, 130, 180, 0.25);
+}
+
+.cta-box span {
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 2px;
+  opacity: 0.8;
+}
+
+.cta-box h2 {
+  font-size: clamp(28px, 4vw, 42px);
+  margin: 10px 0;
+  font-weight: 800;
+}
+
+.cta-box p {
+  margin: 0;
+  opacity: 0.85;
+}
+
+.cta-box .btn-book {
+  background: white;
+  color: #0783b4;
+  flex-shrink: 0;
+}
+
+/* =========================================
+   FOOTER
+========================================= */
+
+.home-footer {
+  background: #08243b;
+  color: white;
+  padding: 55px 0 25px;
+}
+
+.footer-content {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  padding-bottom: 35px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.footer-content h3 {
+  margin: 0;
+  font-size: 25px;
+}
+
+.footer-content h3 span {
+  color: #27c5dd;
+}
+
+.footer-content p {
+  margin: 0;
+  color: #8ca7b8;
+}
+
+.footer-links {
+  display: flex;
+  gap: 25px;
+}
+
+.footer-links a {
+  color: #b2c4cf;
+  text-decoration: none;
+  font-size: 14px;
+}
+
+.footer-links a:hover {
+  color: white;
+}
+
+.copyright {
+  padding-top: 25px;
+  text-align: center;
+  color: #6e899c;
+  font-size: 12px;
+}
+
+/* =========================================
+   RESPONSIVE
+========================================= */
+
+@media (max-width: 991px) {
+
+  .hero-section {
+    padding-top: 80px;
+  }
+
+  .hero-content {
+    text-align: center;
+    padding-top: 0;
+  }
+
+  .hero-description {
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .hero-buttons {
+    justify-content: center;
+  }
+
+  .stats-row {
+    justify-content: center;
+  }
+
+  .visual-column {
+    margin-top: 50px;
+  }
+
+  .medical-scene {
+    transform: scale(0.9);
+  }
+
+  .cta-box {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .footer-content {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .footer-content p {
+    margin: 10px 0;
+  }
+}
+
+@media (max-width: 600px) {
+
+  .hero-section {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+
+  .hero-content h1 {
+    font-size: 45px;
+    letter-spacing: -2px;
+  }
+
+  .hero-description {
+    font-size: 15px;
+  }
+
+  .stats-row {
+    gap: 22px;
+  }
+
+  .stats-row strong {
+    font-size: 22px;
+  }
+
+  .stats-row span {
+    font-size: 11px;
+  }
+
+  .medical-scene {
+    width: 360px;
+    height: 470px;
+    transform: scale(0.75);
+    transform-origin: top center;
+  }
+
+  .doctor-3d {
+    left: 0;
+    top: 70px;
+  }
+
+  .appointment-card {
+    left: -20px;
+  }
+
+  .rating-card {
+    right: -30px;
+  }
+
+  .success-card {
+    right: -40px;
+  }
+
+  .services-section {
+    padding: 70px 20px;
+  }
+
+  .cta-section {
+    padding: 60px 20px;
+  }
+
+  .cta-box {
+    padding: 35px 25px;
+  }
+
+  .footer-links {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+}
+
+@media (max-width: 400px) {
+
+  .hero-content h1 {
+    font-size: 39px;
+  }
+
+  .stats-row {
+    gap: 15px;
+  }
+
+  .stats-row strong {
+    font-size: 19px;
+  }
+
+  .medical-scene {
+    transform: scale(0.65);
+    margin-left: -15px;
+  }
+
+  .hero-buttons button {
+    width: 100%;
+  }
+}

@@ -1,0 +1,1371 @@
+/* =========================================
+   CONTACT PAGE
+========================================= */
+
+.contact-page {
+  min-height: 100vh;
+
+  position: relative;
+
+  overflow: hidden;
+
+  padding: 125px 20px 70px;
+
+  background:
+    radial-gradient(
+      circle at 10% 20%,
+      rgba(0, 174, 210, 0.10),
+      transparent 30%
+    ),
+    radial-gradient(
+      circle at 90% 70%,
+      rgba(31, 118, 218, 0.08),
+      transparent 30%
+    ),
+    #f5fafc;
+}
+
+
+/* =========================================
+   BACKGROUND ORBS
+========================================= */
+
+.contact-bg-orb {
+  position: absolute;
+
+  border-radius: 50%;
+
+  pointer-events: none;
+
+  filter: blur(2px);
+}
+
+.contact-bg-orb-1 {
+  width: 500px;
+  height: 500px;
+
+  top: -250px;
+  left: -180px;
+
+  background: rgba(0, 170, 205, 0.08);
+
+  animation: contactOrb 9s ease-in-out infinite;
+}
+
+.contact-bg-orb-2 {
+  width: 400px;
+  height: 400px;
+
+  right: -180px;
+  bottom: -200px;
+
+  background: rgba(30, 120, 220, 0.08);
+
+  animation: contactOrb 11s ease-in-out infinite reverse;
+}
+
+.contact-bg-orb-3 {
+  width: 180px;
+  height: 180px;
+
+  top: 40%;
+  left: 45%;
+
+  background: rgba(0, 190, 170, 0.05);
+
+  animation: contactOrb 7s ease-in-out infinite;
+}
+
+@keyframes contactOrb {
+
+  0%,
+  100% {
+    transform: translate(0, 0);
+  }
+
+  50% {
+    transform: translate(25px, -30px);
+  }
+
+}
+
+
+/* =========================================
+   PARTICLES
+========================================= */
+
+.contact-particle {
+  position: absolute;
+
+  width: 7px;
+  height: 7px;
+
+  border-radius: 50%;
+
+  background: #11a9c5;
+
+  opacity: 0.18;
+
+  animation: particleFloat 6s ease-in-out infinite;
+
+  pointer-events: none;
+}
+
+.particle-1 {
+  top: 20%;
+  left: 8%;
+}
+
+.particle-2 {
+  top: 32%;
+  right: 9%;
+
+  animation-delay: 1s;
+}
+
+.particle-3 {
+  bottom: 20%;
+  left: 18%;
+
+  animation-delay: 2s;
+}
+
+.particle-4 {
+  bottom: 30%;
+  right: 18%;
+
+  animation-delay: 3s;
+}
+
+.particle-5 {
+  top: 15%;
+  left: 50%;
+
+  animation-delay: 4s;
+}
+
+@keyframes particleFloat {
+
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-25px);
+  }
+
+}
+
+
+/* =========================================
+   CONTAINER
+========================================= */
+
+.contact-container {
+  position: relative;
+
+  z-index: 2;
+
+  max-width: 1200px;
+
+  margin: auto;
+}
+
+
+/* =========================================
+   HEADING
+========================================= */
+
+.contact-heading {
+  text-align: center;
+
+  max-width: 720px;
+
+  margin: 0 auto 55px;
+
+  animation: headingIn 0.8s ease forwards;
+}
+
+@keyframes headingIn {
+
+  from {
+    opacity: 0;
+    transform: translateY(25px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+}
+
+.contact-eyebrow {
+  display: inline-block;
+
+  margin-bottom: 15px;
+
+  color: #0798b8;
+
+  font-size: 11px;
+
+  font-weight: 800;
+
+  letter-spacing: 2.5px;
+}
+
+.contact-heading h1 {
+  margin: 0;
+
+  color: #172f48;
+
+  font-size: clamp(40px, 5vw, 62px);
+
+  line-height: 1.1;
+
+  font-weight: 300;
+
+  letter-spacing: -1.5px;
+}
+
+.contact-heading h1 strong {
+  display: inline;
+
+  color: #079bbd;
+
+  font-weight: 750;
+}
+
+.contact-heading p {
+  margin: 22px auto 0;
+
+  max-width: 620px;
+
+  color: #718294;
+
+  font-size: 15px;
+
+  line-height: 1.8;
+}
+
+
+/* =========================================
+   MAIN
+========================================= */
+
+.contact-main {
+  display: grid;
+
+  grid-template-columns: 1fr 1.05fr;
+
+  align-items: center;
+
+  gap: 70px;
+}
+
+
+/* =========================================
+   3D VISUAL
+========================================= */
+
+.contact-visual {
+  position: relative;
+
+  min-height: 510px;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  perspective: 1000px;
+}
+
+
+/* Main Glow */
+
+.scene-glow {
+  position: absolute;
+
+  width: 330px;
+  height: 330px;
+
+  border-radius: 50%;
+
+  background:
+    radial-gradient(
+      circle,
+      rgba(5, 176, 205, 0.20),
+      rgba(5, 176, 205, 0.04) 55%,
+      transparent 70%
+    );
+
+  filter: blur(10px);
+
+  animation: sceneGlow 5s ease-in-out infinite;
+}
+
+@keyframes sceneGlow {
+
+  0%,
+  100% {
+    transform: scale(1);
+  }
+
+  50% {
+    transform: scale(1.15);
+  }
+
+}
+
+
+/* =========================================
+   MEDICAL ORB
+========================================= */
+
+.medical-orb {
+  width: 230px;
+  height: 230px;
+
+  position: relative;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  transform-style: preserve-3d;
+
+  animation: orbFloat 5s ease-in-out infinite;
+}
+
+@keyframes orbFloat {
+
+  0%,
+  100% {
+    transform: translateY(0) rotateX(0deg) rotateY(0deg);
+  }
+
+  50% {
+    transform: translateY(-18px) rotateX(5deg) rotateY(8deg);
+  }
+
+}
+
+
+/* Orb Core */
+
+.orb-core {
+  width: 135px;
+  height: 135px;
+
+  border-radius: 50%;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  background:
+    radial-gradient(
+      circle at 35% 25%,
+      #72e5ef,
+      #079fc1 45%,
+      #076fa9 100%
+    );
+
+  box-shadow:
+    inset -15px -18px 30px rgba(0, 50, 100, 0.22),
+    inset 12px 12px 25px rgba(255, 255, 255, 0.25),
+    0 25px 60px rgba(0, 140, 190, 0.28);
+
+  transform: translateZ(35px);
+}
+
+.orb-core span {
+  color: white;
+
+  font-size: 70px;
+
+  font-weight: 300;
+
+  text-shadow:
+    0 5px 15px rgba(0, 70, 110, 0.25);
+}
+
+
+/* Orb Rings */
+
+.orb-ring {
+  position: absolute;
+
+  border: 1px solid rgba(0, 153, 190, 0.35);
+
+  border-radius: 50%;
+
+  transform-style: preserve-3d;
+}
+
+.orb-ring-1 {
+  width: 210px;
+  height: 90px;
+
+  transform: rotateX(65deg);
+
+  animation: ringRotate1 7s linear infinite;
+}
+
+.orb-ring-2 {
+  width: 215px;
+  height: 95px;
+
+  transform: rotateY(65deg);
+
+  animation: ringRotate2 8s linear infinite;
+}
+
+.orb-ring-3 {
+  width: 200px;
+  height: 200px;
+
+  border-color: rgba(0, 153, 190, 0.14);
+
+  animation: ringRotate3 12s linear infinite;
+}
+
+@keyframes ringRotate1 {
+
+  from {
+    transform: rotateX(65deg) rotateZ(0);
+  }
+
+  to {
+    transform: rotateX(65deg) rotateZ(360deg);
+  }
+
+}
+
+@keyframes ringRotate2 {
+
+  from {
+    transform: rotateY(65deg) rotateZ(0);
+  }
+
+  to {
+    transform: rotateY(65deg) rotateZ(360deg);
+  }
+
+}
+
+@keyframes ringRotate3 {
+
+  from {
+    transform: rotateZ(0);
+  }
+
+  to {
+    transform: rotateZ(360deg);
+  }
+
+}
+
+
+/* =========================================
+   FLOATING CARDS
+========================================= */
+
+.floating-card {
+  position: absolute;
+
+  z-index: 5;
+
+  display: flex;
+
+  align-items: center;
+
+  gap: 12px;
+
+  padding: 13px 16px;
+
+  background: rgba(255, 255, 255, 0.88);
+
+  backdrop-filter: blur(16px);
+
+  border: 1px solid rgba(255, 255, 255, 0.9);
+
+  border-radius: 16px;
+
+  box-shadow:
+    0 18px 45px rgba(25, 95, 120, 0.12);
+
+  animation: floatingCard 5s ease-in-out infinite;
+}
+
+.floating-card small {
+  display: block;
+
+  margin-bottom: 3px;
+
+  color: #91a0ad;
+
+  font-size: 9px;
+
+  font-weight: 700;
+
+  text-transform: uppercase;
+
+  letter-spacing: 1px;
+}
+
+.floating-card strong {
+  display: block;
+
+  color: #263d54;
+
+  font-size: 12px;
+}
+
+
+/* Floating Icon */
+
+.floating-icon {
+  width: 37px;
+  height: 37px;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 11px;
+
+  background: #e7f8fb;
+
+  color: #079bbd;
+
+  font-size: 17px;
+
+  font-weight: 800;
+}
+
+
+/* Phone */
+
+.phone-card {
+  top: 70px;
+  left: 5px;
+}
+
+
+/* Email */
+
+.email-card {
+  right: 0;
+  top: 155px;
+
+  animation-delay: 1s;
+}
+
+
+/* Support */
+
+.support-card {
+  bottom: 70px;
+  left: 20px;
+
+  animation-delay: 2s;
+}
+
+.support-avatar {
+  width: 36px;
+  height: 36px;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 50%;
+
+  background: #e4f8ee;
+
+  color: #1ca76b;
+
+  font-weight: 800;
+}
+
+.support-card .online-dot {
+  width: 8px;
+  height: 8px;
+
+  margin-left: 5px;
+
+  border-radius: 50%;
+
+  background: #22c77a;
+
+  box-shadow: 0 0 0 4px rgba(34, 199, 122, 0.10);
+}
+
+@keyframes floatingCard {
+
+  0%,
+  100% {
+    transform: translateY(0) rotate(0deg);
+  }
+
+  50% {
+    transform: translateY(-12px) rotate(1deg);
+  }
+
+}
+
+
+/* =========================================
+   3D CROSS
+========================================= */
+
+.medical-cross-3d {
+  position: absolute;
+
+  right: 70px;
+  bottom: 80px;
+
+  width: 70px;
+  height: 70px;
+
+  transform-style: preserve-3d;
+
+  transform: rotateX(55deg) rotateZ(35deg);
+
+  animation: crossFloat 6s ease-in-out infinite;
+}
+
+.cross-horizontal,
+.cross-vertical {
+  position: absolute;
+
+  background: linear-gradient(
+    135deg,
+    #35d1df,
+    #078bb9
+  );
+
+  border-radius: 10px;
+
+  box-shadow:
+    8px 10px 0 rgba(0, 100, 145, 0.12),
+    0 12px 25px rgba(0, 140, 180, 0.16);
+}
+
+.cross-horizontal {
+  width: 70px;
+  height: 23px;
+
+  top: 24px;
+  left: 0;
+}
+
+.cross-vertical {
+  width: 23px;
+  height: 70px;
+
+  top: 0;
+  left: 24px;
+}
+
+@keyframes crossFloat {
+
+  0%,
+  100% {
+    transform: translateY(0) rotateX(55deg) rotateZ(35deg);
+  }
+
+  50% {
+    transform: translateY(-15px) rotateX(55deg) rotateZ(45deg);
+  }
+
+}
+
+
+/* =========================================
+   SCENE RINGS
+========================================= */
+
+.scene-ring {
+  position: absolute;
+
+  border-radius: 50%;
+
+  border: 1px dashed rgba(8, 154, 190, 0.14);
+
+  pointer-events: none;
+}
+
+.scene-ring-1 {
+  width: 400px;
+  height: 400px;
+
+  animation: sceneRing 20s linear infinite;
+}
+
+.scene-ring-2 {
+  width: 470px;
+  height: 470px;
+
+  border-color: rgba(8, 154, 190, 0.07);
+
+  animation: sceneRing 30s linear infinite reverse;
+}
+
+@keyframes sceneRing {
+
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+
+}
+
+
+/* =========================================
+   CONTACT CARD
+========================================= */
+
+.contact-card {
+  padding: 36px;
+
+  border-radius: 28px;
+
+  background: rgba(255, 255, 255, 0.90);
+
+  backdrop-filter: blur(20px);
+
+  border: 1px solid rgba(255, 255, 255, 0.95);
+
+  box-shadow:
+    0 30px 80px rgba(35, 80, 105, 0.12),
+    0 8px 30px rgba(35, 80, 105, 0.05);
+
+  animation: cardIn 0.8s ease 0.15s both;
+}
+
+@keyframes cardIn {
+
+  from {
+    opacity: 0;
+    transform: translateX(35px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+
+}
+
+
+/* Card Header */
+
+.contact-card-top {
+  display: flex;
+
+  align-items: center;
+
+  gap: 14px;
+
+  margin-bottom: 28px;
+}
+
+.contact-card-icon {
+  width: 53px;
+  height: 53px;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 16px;
+
+  background: #e7f8fb;
+
+  font-size: 23px;
+}
+
+.contact-card-top span {
+  color: #079bbd;
+
+  font-size: 9px;
+
+  font-weight: 800;
+
+  letter-spacing: 1.5px;
+}
+
+.contact-card-top h2 {
+  margin: 3px 0 0;
+
+  color: #1a344d;
+
+  font-size: 26px;
+}
+
+
+/* =========================================
+   FORM
+========================================= */
+
+.contact-row {
+  display: grid;
+
+  grid-template-columns: 1fr 1fr;
+
+  gap: 15px;
+}
+
+.contact-field {
+  margin-bottom: 17px;
+}
+
+.contact-field label {
+  display: block;
+
+  margin-bottom: 7px;
+
+  color: #3d5062;
+
+  font-size: 11px;
+
+  font-weight: 700;
+}
+
+.contact-field label span {
+  color: #e04444;
+}
+
+
+/* Inputs */
+
+.contact-input,
+.contact-textarea {
+  display: flex;
+
+  align-items: center;
+
+  border: 1px solid #e0e8ed;
+
+  border-radius: 12px;
+
+  background: #f9fbfc;
+
+  transition: all 0.25s ease;
+}
+
+.contact-input {
+  height: 48px;
+}
+
+.contact-input:focus-within,
+.contact-textarea:focus-within {
+  background: white;
+
+  border-color: #159dbb;
+
+  box-shadow:
+    0 0 0 4px rgba(21, 157, 187, 0.08);
+}
+
+.contact-input > span,
+.contact-textarea > span {
+  width: 42px;
+
+  flex-shrink: 0;
+
+  text-align: center;
+
+  opacity: 0.55;
+
+  font-size: 14px;
+}
+
+
+/* Input */
+
+.contact-input input,
+.contact-input select {
+  width: 100%;
+  height: 100%;
+
+  border: none;
+  outline: none;
+
+  background: transparent;
+
+  color: #2b4053;
+
+  font-size: 12px;
+
+  padding-right: 12px;
+}
+
+.contact-input input::placeholder {
+  color: #aab5be;
+}
+
+.contact-input select {
+  cursor: pointer;
+}
+
+
+/* Textarea */
+
+.contact-textarea {
+  align-items: flex-start;
+
+  min-height: 120px;
+}
+
+.contact-textarea > span {
+  padding-top: 15px;
+}
+
+.contact-textarea textarea {
+  width: 100%;
+
+  min-height: 118px;
+
+  padding: 14px 14px 14px 0;
+
+  resize: vertical;
+
+  border: none;
+  outline: none;
+
+  background: transparent;
+
+  color: #2b4053;
+
+  font-family: inherit;
+
+  font-size: 12px;
+
+  line-height: 1.6;
+}
+
+.contact-textarea textarea::placeholder {
+  color: #aab5be;
+}
+
+
+/* =========================================
+   SEND BUTTON
+========================================= */
+
+.send-message-button {
+  width: 100%;
+  height: 52px;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  gap: 12px;
+
+  border: none;
+
+  border-radius: 13px;
+
+  color: white;
+
+  background: linear-gradient(
+    135deg,
+    #0789c2,
+    #09aabd
+  );
+
+  font-size: 14px;
+
+  font-weight: 700;
+
+  cursor: pointer;
+
+  box-shadow:
+    0 12px 25px rgba(15, 145, 190, 0.22);
+
+  transition: all 0.3s ease;
+}
+
+.send-message-button strong {
+  font-size: 20px;
+
+  font-weight: 400;
+
+  transition: transform 0.25s ease;
+}
+
+.send-message-button:hover {
+  transform: translateY(-3px);
+
+  box-shadow:
+    0 16px 32px rgba(15, 145, 190, 0.30);
+}
+
+.send-message-button:hover strong {
+  transform: translateX(5px);
+}
+
+
+/* Security */
+
+.contact-secure {
+  text-align: center;
+
+  margin-top: 15px;
+
+  color: #98a5af;
+
+  font-size: 10px;
+}
+
+
+/* =========================================
+   CONTACT INFO
+========================================= */
+
+.contact-info-grid {
+  display: grid;
+
+  grid-template-columns: repeat(3, 1fr);
+
+  gap: 18px;
+
+  margin-top: 60px;
+}
+
+.contact-info-box {
+  display: flex;
+
+  align-items: center;
+
+  gap: 15px;
+
+  padding: 20px;
+
+  border-radius: 18px;
+
+  background: rgba(255, 255, 255, 0.72);
+
+  border: 1px solid rgba(255, 255, 255, 0.9);
+
+  box-shadow:
+    0 12px 35px rgba(30, 90, 115, 0.06);
+
+  transition: all 0.3s ease;
+}
+
+.contact-info-box:hover {
+  transform: translateY(-5px);
+
+  box-shadow:
+    0 18px 40px rgba(30, 90, 115, 0.10);
+}
+
+.info-box-icon {
+  width: 45px;
+  height: 45px;
+
+  flex-shrink: 0;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 13px;
+
+  background: #e8f8fb;
+
+  color: #079abb;
+
+  font-size: 18px;
+
+  font-weight: 700;
+}
+
+.contact-info-box small {
+  color: #079abb;
+
+  font-size: 8px;
+
+  font-weight: 800;
+
+  letter-spacing: 1.4px;
+}
+
+.contact-info-box h3 {
+  margin: 4px 0;
+
+  color: #273f55;
+
+  font-size: 13px;
+}
+
+.contact-info-box p {
+  margin: 0;
+
+  color: #8b99a6;
+
+  font-size: 10px;
+}
+
+
+/* =========================================
+   BOTTOM CTA
+========================================= */
+
+.contact-bottom {
+  margin-top: 25px;
+
+  padding: 28px 32px;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: space-between;
+
+  border-radius: 22px;
+
+  background:
+    linear-gradient(
+      135deg,
+      rgba(7, 143, 190, 0.95),
+      rgba(24, 112, 207, 0.95)
+    );
+
+  box-shadow:
+    0 20px 45px rgba(25, 120, 180, 0.18);
+}
+
+.contact-bottom span {
+  color: rgba(255, 255, 255, 0.72);
+
+  font-size: 9px;
+
+  font-weight: 800;
+
+  letter-spacing: 1.7px;
+}
+
+.contact-bottom h2 {
+  margin: 5px 0 0;
+
+  color: white;
+
+  font-size: 22px;
+}
+
+.contact-doctors-button {
+  display: flex;
+
+  align-items: center;
+
+  gap: 12px;
+
+  padding: 13px 20px;
+
+  border-radius: 12px;
+
+  background: white;
+
+  color: #087eae;
+
+  text-decoration: none;
+
+  font-size: 12px;
+
+  font-weight: 800;
+
+  transition: all 0.3s ease;
+}
+
+.contact-doctors-button strong {
+  font-size: 18px;
+
+  font-weight: 400;
+
+  transition: transform 0.25s ease;
+}
+
+.contact-doctors-button:hover {
+  transform: translateY(-3px);
+
+  color: #087eae;
+
+  box-shadow:
+    0 10px 25px rgba(0, 50, 100, 0.15);
+}
+
+.contact-doctors-button:hover strong {
+  transform: translateX(4px);
+}
+
+
+/* =========================================
+   TABLET
+========================================= */
+
+@media (max-width: 950px) {
+
+  .contact-main {
+    grid-template-columns: 1fr;
+
+    gap: 20px;
+  }
+
+  .contact-visual {
+    min-height: 430px;
+  }
+
+  .contact-card {
+    max-width: 650px;
+
+    width: 100%;
+
+    margin: auto;
+  }
+
+}
+
+
+/* =========================================
+   MOBILE
+========================================= */
+
+@media (max-width: 650px) {
+
+  .contact-page {
+    padding: 105px 15px 45px;
+  }
+
+  .contact-heading {
+    margin-bottom: 30px;
+  }
+
+  .contact-heading h1 {
+    font-size: 39px;
+  }
+
+  .contact-heading p {
+    font-size: 13px;
+  }
+
+  .contact-visual {
+    min-height: 370px;
+  }
+
+  .medical-orb {
+    transform: scale(0.8);
+  }
+
+  .phone-card {
+    left: -5px;
+    top: 50px;
+  }
+
+  .email-card {
+    right: -5px;
+    top: 130px;
+  }
+
+  .support-card {
+    left: 0;
+    bottom: 30px;
+  }
+
+  .medical-cross-3d {
+    right: 15px;
+    bottom: 30px;
+
+    transform: scale(0.75) rotateX(55deg) rotateZ(35deg);
+  }
+
+  .scene-ring-1 {
+    width: 320px;
+    height: 320px;
+  }
+
+  .scene-ring-2 {
+    width: 370px;
+    height: 370px;
+  }
+
+  .contact-card {
+    padding: 25px 20px;
+
+    border-radius: 22px;
+  }
+
+  .contact-row {
+    grid-template-columns: 1fr;
+
+    gap: 0;
+  }
+
+  .contact-info-grid {
+    grid-template-columns: 1fr;
+
+    margin-top: 35px;
+  }
+
+  .contact-bottom {
+    flex-direction: column;
+
+    align-items: flex-start;
+
+    gap: 20px;
+
+    padding: 25px;
+  }
+
+}
+
+
+/* =========================================
+   SMALL PHONES
+========================================= */
+
+@media (max-width: 400px) {
+
+  .contact-heading h1 {
+    font-size: 34px;
+  }
+
+  .contact-visual {
+    min-height: 340px;
+  }
+
+  .floating-card {
+    padding: 10px 12px;
+  }
+
+  .floating-card strong {
+    font-size: 10px;
+  }
+
+  .floating-icon {
+    width: 32px;
+    height: 32px;
+  }
+
+  .medical-orb {
+    transform: scale(0.68);
+  }
+
+}

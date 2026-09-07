@@ -1,0 +1,553 @@
+/* =========================================
+   DOCTOR CARD
+========================================= */
+
+.doctor-card {
+  position: relative;
+
+  width: 100%;
+
+  padding: 25px;
+
+  border-radius: 25px;
+
+  background:
+    linear-gradient(
+      145deg,
+      rgba(255, 255, 255, 0.96),
+      rgba(239, 250, 255, 0.92)
+    );
+
+  border: 1px solid rgba(38, 145, 185, 0.12);
+
+  box-shadow:
+    0 15px 40px rgba(30, 105, 140, 0.09);
+
+  overflow: hidden;
+
+  transition:
+    transform 0.45s cubic-bezier(.2,.8,.2,1),
+    box-shadow 0.45s ease,
+    border-color 0.45s ease;
+
+  transform-style: preserve-3d;
+}
+
+/* =========================================
+   CARD HOVER
+========================================= */
+
+.doctor-card:hover {
+  transform:
+    translateY(-12px)
+    perspective(1000px)
+    rotateX(2deg)
+    rotateY(-2deg);
+
+  border-color: rgba(0, 165, 205, 0.3);
+
+  box-shadow:
+    0 30px 65px rgba(26, 116, 155, 0.18);
+}
+
+/* =========================================
+   DECORATIVE GLOW
+========================================= */
+
+.card-glow {
+  position: absolute;
+
+  width: 180px;
+  height: 180px;
+
+  right: -80px;
+  top: -80px;
+
+  border-radius: 50%;
+
+  background:
+    radial-gradient(
+      circle,
+      rgba(0, 183, 220, 0.16),
+      transparent 70%
+    );
+
+  transition:
+    transform 0.5s ease;
+}
+
+.doctor-card:hover .card-glow {
+  transform: scale(1.5);
+}
+
+/* =========================================
+   TOP
+========================================= */
+
+.doctor-card-top {
+  position: relative;
+  z-index: 2;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+
+  margin-bottom: 20px;
+}
+
+/* =========================================
+   AVATAR
+========================================= */
+
+.doctor-avatar-small {
+  position: relative;
+
+  width: 75px;
+  height: 75px;
+
+  border-radius: 22px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  font-size: 39px;
+
+  background:
+    linear-gradient(
+      145deg,
+      #e4f7ff,
+      #c9edf9
+    );
+
+  box-shadow:
+    inset -8px -8px 15px rgba(0, 130, 170, 0.08),
+    0 12px 25px rgba(0, 130, 170, 0.12);
+
+  transition:
+    transform 0.4s ease;
+}
+
+.doctor-card:hover .doctor-avatar-small {
+  transform:
+    translateZ(35px)
+    rotate(-4deg)
+    scale(1.05);
+}
+
+/* Online indicator */
+
+.online-dot {
+  position: absolute;
+
+  right: -3px;
+  bottom: -3px;
+
+  width: 16px;
+  height: 16px;
+
+  border-radius: 50%;
+
+  background: #14c987;
+
+  border: 3px solid white;
+
+  box-shadow:
+    0 0 0 4px rgba(20, 201, 135, 0.12);
+}
+
+/* =========================================
+   AVAILABILITY
+========================================= */
+
+.availability {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+
+  padding: 7px 11px;
+
+  border-radius: 50px;
+
+  background: #e8fbf4;
+
+  color: #0b9a68;
+
+  font-size: 11px;
+  font-weight: 750;
+}
+
+.availability span {
+  width: 6px;
+  height: 6px;
+
+  border-radius: 50%;
+
+  background: #11c786;
+
+  animation: availabilityPulse 1.7s infinite;
+}
+
+@keyframes availabilityPulse {
+  0% {
+    box-shadow: 0 0 0 0 rgba(17, 199, 134, 0.4);
+  }
+
+  70% {
+    box-shadow: 0 0 0 7px rgba(17, 199, 134, 0);
+  }
+
+  100% {
+    box-shadow: 0 0 0 0 rgba(17, 199, 134, 0);
+  }
+}
+
+/* =========================================
+   DOCTOR INFO
+========================================= */
+
+.doctor-info {
+  position: relative;
+  z-index: 2;
+}
+
+.doctor-info h3 {
+  margin: 0 0 8px;
+
+  color: #153b56;
+
+  font-size: 22px;
+  font-weight: 800;
+
+  letter-spacing: -0.5px;
+}
+
+.specialization {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+
+  color: #078bb5;
+
+  font-size: 14px;
+  font-weight: 650;
+}
+
+.medical-icon {
+  width: 23px;
+  height: 23px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 7px;
+
+  background: #e4f8ff;
+
+  color: #078bb5;
+
+  font-size: 13px;
+}
+
+/* =========================================
+   RATING
+========================================= */
+
+.doctor-rating {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+
+  margin-top: 13px;
+}
+
+.stars {
+  color: #f3b63f;
+
+  font-size: 13px;
+
+  letter-spacing: 1px;
+}
+
+.doctor-rating strong {
+  font-size: 13px;
+  color: #39566c;
+}
+
+.reviews {
+  color: #8aa0af;
+  font-size: 11px;
+}
+
+/* =========================================
+   DETAILS
+========================================= */
+
+.doctor-details {
+  display: grid;
+
+  grid-template-columns: 1fr 1fr;
+
+  gap: 10px;
+
+  margin-top: 22px;
+}
+
+.detail-item {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+
+  padding: 11px;
+
+  border-radius: 13px;
+
+  background: rgba(238, 249, 253, 0.75);
+
+  transition:
+    transform 0.3s ease,
+    background 0.3s ease;
+}
+
+.doctor-card:hover .detail-item {
+  background: rgba(225, 246, 252, 0.95);
+}
+
+.detail-icon {
+  font-size: 17px;
+}
+
+.detail-item small {
+  display: block;
+
+  color: #8aa0af;
+
+  font-size: 9px;
+
+  margin-bottom: 2px;
+}
+
+.detail-item strong {
+  display: block;
+
+  color: #38576d;
+
+  font-size: 11px;
+}
+
+/* =========================================
+   DIVIDER
+========================================= */
+
+.card-divider {
+  height: 1px;
+
+  background:
+    linear-gradient(
+      90deg,
+      transparent,
+      #dcecf3,
+      transparent
+    );
+
+  margin: 22px 0;
+}
+
+/* =========================================
+   FOOTER
+========================================= */
+
+.doctor-card-footer {
+  position: relative;
+  z-index: 2;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: space-between;
+
+  gap: 12px;
+}
+
+.consultation small {
+  display: block;
+
+  color: #8ba0af;
+
+  font-size: 10px;
+}
+
+.consultation strong {
+  display: block;
+
+  margin-top: 2px;
+
+  color: #173d58;
+
+  font-size: 20px;
+}
+
+/* =========================================
+   BOOK BUTTON
+========================================= */
+
+.book-doctor-btn {
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  gap: 8px;
+
+  padding: 11px 15px;
+
+  border-radius: 11px;
+
+  color: white;
+
+  text-decoration: none;
+
+  font-size: 11px;
+
+  font-weight: 750;
+
+  background:
+    linear-gradient(
+      135deg,
+      #0787c2,
+      #08abbf
+    );
+
+  box-shadow:
+    0 9px 20px rgba(0, 145, 190, 0.2);
+
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
+}
+
+.book-doctor-btn span {
+  font-size: 17px;
+
+  transition:
+    transform 0.3s ease;
+}
+
+.book-doctor-btn:hover {
+  color: white;
+
+  transform: translateY(-3px);
+
+  box-shadow:
+    0 14px 27px rgba(0, 145, 190, 0.3);
+}
+
+.book-doctor-btn:hover span {
+  transform: translateX(4px);
+}
+
+/* =========================================
+   TABLET
+========================================= */
+
+@media (max-width: 768px) {
+
+  .doctor-card {
+    padding: 22px;
+  }
+
+  .doctor-info h3 {
+    font-size: 20px;
+  }
+
+  .doctor-avatar-small {
+    width: 68px;
+    height: 68px;
+
+    font-size: 34px;
+  }
+
+  .doctor-details {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+/* =========================================
+   MOBILE
+========================================= */
+
+@media (max-width: 480px) {
+
+  .doctor-card {
+    padding: 20px;
+
+    border-radius: 21px;
+  }
+
+  .doctor-card-top {
+    margin-bottom: 17px;
+  }
+
+  .doctor-avatar-small {
+    width: 65px;
+    height: 65px;
+
+    font-size: 32px;
+
+    border-radius: 19px;
+  }
+
+  .availability {
+    font-size: 10px;
+    padding: 6px 9px;
+  }
+
+  .doctor-info h3 {
+    font-size: 19px;
+  }
+
+  .specialization {
+    font-size: 13px;
+  }
+
+  .reviews {
+    display: none;
+  }
+
+  .doctor-details {
+    grid-template-columns: 1fr;
+
+    gap: 8px;
+  }
+
+  .doctor-card-footer {
+    align-items: flex-end;
+  }
+
+  .book-doctor-btn {
+    padding: 11px 12px;
+
+    font-size: 10px;
+  }
+}
+
+/* =========================================
+   VERY SMALL DEVICES
+========================================= */
+
+@media (max-width: 350px) {
+
+  .doctor-card-footer {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .consultation {
+    text-align: center;
+  }
+
+  .book-doctor-btn {
+    width: 100%;
+  }
+}

@@ -1,0 +1,929 @@
+/* =========================================
+   COMMON / SYSTEM PAGES
+========================================= */
+
+.system-page {
+    min-height: 100vh;
+    width: 100%;
+
+    position: relative;
+    overflow: hidden;
+
+    box-sizing: border-box;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 105px 25px 40px;
+
+    background:
+        radial-gradient(
+            circle at 8% 25%,
+            rgba(0, 174, 239, 0.13),
+            transparent 28%
+        ),
+        radial-gradient(
+            circle at 92% 18%,
+            rgba(0, 174, 239, 0.10),
+            transparent 30%
+        ),
+        linear-gradient(
+            135deg,
+            #f7fcff 0%,
+            #eef8fc 50%,
+            #f5f8ff 100%
+        );
+}
+
+
+/* =========================================
+   BACKGROUND ORBS
+========================================= */
+
+.system-orb {
+    position: absolute;
+
+    border-radius: 50%;
+
+    pointer-events: none;
+
+    filter: blur(2px);
+}
+
+.system-orb-1 {
+    width: 420px;
+    height: 420px;
+
+    left: -190px;
+    top: 130px;
+
+    background: rgba(0, 174, 239, 0.09);
+
+    animation: systemOrbFloat 8s ease-in-out infinite;
+}
+
+.system-orb-2 {
+    width: 330px;
+    height: 330px;
+
+    right: -130px;
+    top: 80px;
+
+    background: rgba(0, 174, 239, 0.08);
+
+    animation: systemOrbFloat 10s ease-in-out infinite reverse;
+}
+
+.system-orb-3 {
+    width: 250px;
+    height: 250px;
+
+    right: -80px;
+    bottom: -80px;
+
+    background: rgba(100, 110, 255, 0.07);
+
+    animation: systemOrbFloat 9s ease-in-out infinite;
+}
+
+@keyframes systemOrbFloat {
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-22px);
+    }
+}
+
+
+/* =========================================
+   FLOATING MEDICAL SYMBOLS
+========================================= */
+
+.system-floating-symbol {
+    position: absolute;
+
+    color: #079bc8;
+
+    font-size: 22px;
+
+    opacity: 0.35;
+
+    pointer-events: none;
+
+    animation: symbolFloat 6s ease-in-out infinite;
+}
+
+.system-symbol-1 {
+    left: 6%;
+    top: 28%;
+}
+
+.system-symbol-2 {
+    left: 12%;
+    bottom: 20%;
+
+    animation-delay: 1.5s;
+}
+
+.system-symbol-3 {
+    right: 8%;
+    top: 35%;
+
+    animation-delay: 2.5s;
+}
+
+.system-symbol-4 {
+    right: 13%;
+    bottom: 18%;
+
+    animation-delay: 3.5s;
+}
+
+@keyframes symbolFloat {
+    0%,
+    100% {
+        transform: translateY(0) rotate(0deg);
+    }
+
+    50% {
+        transform: translateY(-15px) rotate(8deg);
+    }
+}
+
+
+/* =========================================
+   MAIN SYSTEM CONTAINER
+========================================= */
+
+.system-container {
+    position: relative;
+
+    z-index: 5;
+
+    width: min(1050px, 100%);
+
+    display: grid;
+
+    grid-template-columns:
+        minmax(0, 0.95fr)
+        minmax(400px, 1.05fr);
+
+    align-items: center;
+
+    gap: 75px;
+}
+
+
+/* =========================================
+   3D VISUAL
+========================================= */
+
+.system-visual {
+    position: relative;
+
+    width: 100%;
+
+    min-height: 430px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+}
+
+
+/* =========================================
+   3D MEDICAL ORB
+========================================= */
+
+.system-orb-visual {
+    position: relative;
+
+    width: 270px;
+    height: 270px;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 50%;
+
+    background:
+        radial-gradient(
+            circle at 35% 30%,
+            #ffffff 0%,
+            #dff7fd 25%,
+            #8ed9ed 58%,
+            #079bc8 100%
+        );
+
+    box-shadow:
+        inset -25px -25px 45px rgba(0, 96, 130, 0.20),
+        inset 18px 18px 35px rgba(255, 255, 255, 0.65),
+        0 35px 75px rgba(0, 135, 180, 0.25);
+
+    animation: medicalOrbFloat 5s ease-in-out infinite;
+}
+
+@keyframes medicalOrbFloat {
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-14px);
+    }
+}
+
+
+/* =========================================
+   ORB HIGHLIGHT
+========================================= */
+
+.system-orb-visual::before {
+    content: "";
+
+    position: absolute;
+
+    width: 75px;
+    height: 38px;
+
+    top: 42px;
+    left: 55px;
+
+    border-radius: 50%;
+
+    background: rgba(255, 255, 255, 0.48);
+
+    filter: blur(5px);
+
+    transform: rotate(-25deg);
+}
+
+
+/* =========================================
+   MEDICAL CROSS
+========================================= */
+
+.system-medical-cross {
+    position: relative;
+
+    width: 105px;
+    height: 105px;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    color: white;
+
+    font-size: 95px;
+
+    font-weight: 800;
+
+    line-height: 1;
+
+    text-shadow:
+        0 7px 18px rgba(0, 90, 130, 0.28);
+
+    transform: translateZ(20px);
+}
+
+
+/* =========================================
+   3D RINGS
+========================================= */
+
+.system-ring {
+    position: absolute;
+
+    border: 2px solid rgba(8, 167, 215, 0.25);
+
+    border-radius: 50%;
+
+    pointer-events: none;
+}
+
+.system-ring-1 {
+    width: 350px;
+    height: 120px;
+
+    transform: rotate(-22deg);
+
+    animation: ringRotateOne 8s linear infinite;
+}
+
+.system-ring-2 {
+    width: 350px;
+    height: 120px;
+
+    transform: rotate(62deg);
+
+    animation: ringRotateTwo 10s linear infinite;
+}
+
+.system-ring-3 {
+    width: 315px;
+    height: 315px;
+
+    border-style: dashed;
+
+    opacity: 0.45;
+
+    animation: ringRotateThree 18s linear infinite;
+}
+
+@keyframes ringRotateOne {
+    from {
+        transform: rotate(-22deg);
+    }
+
+    to {
+        transform: rotate(338deg);
+    }
+}
+
+@keyframes ringRotateTwo {
+    from {
+        transform: rotate(62deg);
+    }
+
+    to {
+        transform: rotate(-298deg);
+    }
+}
+
+@keyframes ringRotateThree {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+
+/* =========================================
+   SMALL FLOATING CARDS
+========================================= */
+
+.system-mini-card {
+    position: absolute;
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 10px;
+
+    padding: 12px 16px;
+
+    border-radius: 15px;
+
+    background: rgba(255, 255, 255, 0.88);
+
+    border: 1px solid rgba(255, 255, 255, 0.95);
+
+    box-shadow:
+        0 15px 35px rgba(35, 100, 130, 0.12);
+
+    backdrop-filter: blur(15px);
+
+    animation: miniCardFloat 5s ease-in-out infinite;
+}
+
+.system-mini-card strong {
+    display: block;
+
+    color: #173d5d;
+
+    font-size: 12px;
+}
+
+.system-mini-card span {
+    display: block;
+
+    color: #829bad;
+
+    font-size: 10px;
+
+    margin-top: 2px;
+}
+
+.system-mini-icon {
+    width: 34px;
+    height: 34px;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 10px;
+
+    background: #e6f8fd;
+
+    font-size: 16px;
+}
+
+.system-mini-card-1 {
+    left: 2%;
+    top: 15%;
+}
+
+.system-mini-card-2 {
+    right: 0;
+    bottom: 18%;
+
+    animation-delay: 1.5s;
+}
+
+@keyframes miniCardFloat {
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-10px);
+    }
+}
+
+
+/* =========================================
+   CONTENT
+========================================= */
+
+.system-content {
+    min-width: 0;
+}
+
+.system-code {
+    display: inline-flex;
+
+    align-items: center;
+
+    padding: 7px 13px;
+
+    margin-bottom: 14px;
+
+    border-radius: 30px;
+
+    background: #e5f7fc;
+
+    color: #079bc8;
+
+    font-size: 11px;
+
+    font-weight: 800;
+
+    letter-spacing: 1px;
+}
+
+.system-content h1 {
+    margin: 0 0 17px;
+
+    color: #103856;
+
+    font-size: clamp(40px, 5vw, 62px);
+
+    line-height: 0.98;
+
+    font-weight: 800;
+
+    letter-spacing: -2px;
+}
+
+.system-content h1 span {
+    color: #079bc8;
+}
+
+.system-content > p {
+    max-width: 520px;
+
+    margin: 0 0 28px;
+
+    color: #6e899e;
+
+    font-size: 15px;
+
+    line-height: 1.75;
+}
+
+
+/* =========================================
+   SYSTEM ACTIONS
+========================================= */
+
+.system-actions {
+    display: flex;
+
+    align-items: center;
+
+    gap: 12px;
+
+    flex-wrap: wrap;
+}
+
+.system-primary-button,
+.system-secondary-button {
+    height: 45px;
+
+    padding: 0 21px;
+
+    display: inline-flex;
+
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 12px;
+
+    font-size: 12px;
+
+    font-weight: 700;
+
+    text-decoration: none;
+
+    box-sizing: border-box;
+}
+
+.system-primary-button {
+    color: white;
+
+    background:
+        linear-gradient(
+            135deg,
+            #08a7d7,
+            #078fbd
+        );
+
+    box-shadow:
+        0 10px 23px rgba(0, 154, 201, 0.20);
+}
+
+.system-secondary-button {
+    color: #42647b;
+
+    background: rgba(255, 255, 255, 0.72);
+
+    border: 1px solid #dce9ee;
+}
+
+
+/* =========================================
+   ERROR STATUS
+========================================= */
+
+.system-status {
+    margin-top: 25px;
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 9px;
+
+    color: #7c95a6;
+
+    font-size: 11px;
+}
+
+.system-status-dot {
+    width: 8px;
+    height: 8px;
+
+    border-radius: 50%;
+
+    background: #23b87d;
+
+    box-shadow:
+        0 0 0 5px rgba(35, 184, 125, 0.10);
+}
+
+
+/* =========================================
+   LEGAL PAGES
+========================================= */
+
+.legal-page {
+    min-height: 100vh;
+
+    position: relative;
+
+    box-sizing: border-box;
+
+    padding: 110px 20px 55px;
+
+    background:
+        radial-gradient(
+            circle at 8% 20%,
+            rgba(0, 174, 239, 0.12),
+            transparent 28%
+        ),
+        radial-gradient(
+            circle at 92% 20%,
+            rgba(0, 174, 239, 0.09),
+            transparent 30%
+        ),
+        linear-gradient(
+            135deg,
+            #f7fcff,
+            #eef8fc,
+            #f5f8ff
+        );
+}
+
+.legal-container {
+    position: relative;
+
+    z-index: 3;
+
+    width: min(900px, 100%);
+
+    margin: 0 auto;
+}
+
+.legal-header {
+    text-align: center;
+
+    margin-bottom: 28px;
+}
+
+.legal-label {
+    color: #079bc8;
+
+    font-size: 11px;
+
+    font-weight: 800;
+
+    letter-spacing: 1.5px;
+}
+
+.legal-header h1 {
+    margin: 9px 0 10px;
+
+    color: #103856;
+
+    font-size: clamp(34px, 5vw, 54px);
+
+    line-height: 1;
+
+    font-weight: 800;
+
+    letter-spacing: -1.5px;
+}
+
+.legal-header p {
+    margin: 0;
+
+    color: #718ca0;
+
+    font-size: 14px;
+}
+
+.legal-card {
+    padding: 40px 45px;
+
+    border-radius: 27px;
+
+    background: rgba(255, 255, 255, 0.91);
+
+    border: 1px solid rgba(255, 255, 255, 0.95);
+
+    box-shadow:
+        0 30px 80px rgba(36, 91, 120, 0.12),
+        0 10px 30px rgba(36, 91, 120, 0.06);
+
+    backdrop-filter: blur(18px);
+}
+
+.legal-section {
+    margin-bottom: 26px;
+}
+
+.legal-section:last-child {
+    margin-bottom: 0;
+}
+
+.legal-section h2 {
+    margin: 0 0 7px;
+
+    color: #173f5e;
+
+    font-size: 17px;
+
+    font-weight: 750;
+}
+
+.legal-section p {
+    margin: 0;
+
+    color: #6d899e;
+
+    font-size: 13px;
+
+    line-height: 1.75;
+}
+
+.legal-actions {
+    display: flex;
+
+    justify-content: space-between;
+
+    gap: 12px;
+
+    margin-top: 30px;
+
+    padding-top: 23px;
+
+    border-top: 1px solid #e5edf2;
+}
+
+.legal-button {
+    min-height: 43px;
+
+    padding: 0 19px;
+
+    display: inline-flex;
+
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 11px;
+
+    font-size: 12px;
+
+    font-weight: 700;
+
+    text-decoration: none;
+}
+
+.legal-button-primary {
+    color: white;
+
+    background:
+        linear-gradient(
+            135deg,
+            #08a7d7,
+            #078fbd
+        );
+}
+
+.legal-button-secondary {
+    color: #42647b;
+
+    background: #edf5f8;
+
+    border: 1px solid #dce9ee;
+}
+
+
+/* =========================================
+   RESPONSIVE
+========================================= */
+
+@media (max-width: 900px) {
+
+    .system-container {
+        grid-template-columns: 1fr;
+
+        max-width: 620px;
+
+        gap: 30px;
+
+        text-align: center;
+    }
+
+    .system-visual {
+        min-height: 330px;
+
+        order: 1;
+    }
+
+    .system-content {
+        order: 2;
+    }
+
+    .system-content > p {
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .system-actions {
+        justify-content: center;
+    }
+
+    .system-status {
+        justify-content: center;
+    }
+
+    .system-orb-visual {
+        width: 220px;
+        height: 220px;
+    }
+
+    .system-ring-1,
+    .system-ring-2 {
+        width: 290px;
+        height: 100px;
+    }
+
+    .system-ring-3 {
+        width: 260px;
+        height: 260px;
+    }
+
+    .system-medical-cross {
+        font-size: 78px;
+    }
+}
+
+
+@media (max-width: 600px) {
+
+    .system-page {
+        padding: 95px 16px 30px;
+
+        overflow: visible;
+    }
+
+    .system-visual {
+        min-height: 270px;
+    }
+
+    .system-orb-visual {
+        width: 175px;
+        height: 175px;
+    }
+
+    .system-ring-1,
+    .system-ring-2 {
+        width: 230px;
+        height: 80px;
+    }
+
+    .system-ring-3 {
+        width: 210px;
+        height: 210px;
+    }
+
+    .system-medical-cross {
+        font-size: 62px;
+    }
+
+    .system-mini-card {
+        padding: 9px 12px;
+    }
+
+    .system-mini-card-1 {
+        left: 0;
+    }
+
+    .system-mini-card-2 {
+        right: 0;
+    }
+
+    .system-content h1 {
+        font-size: 42px;
+    }
+
+    .system-actions {
+        flex-direction: column;
+    }
+
+    .system-primary-button,
+    .system-secondary-button {
+        width: 100%;
+    }
+
+    .legal-page {
+        padding: 95px 14px 35px;
+    }
+
+    .legal-card {
+        padding: 28px 21px;
+
+        border-radius: 21px;
+    }
+
+    .legal-actions {
+        flex-direction: column;
+    }
+
+    .legal-button {
+        width: 100%;
+    }
+
+    .system-floating-symbol {
+        display: none;
+    }
+}
