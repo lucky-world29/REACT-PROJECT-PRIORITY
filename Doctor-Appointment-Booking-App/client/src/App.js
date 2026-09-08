@@ -1,102 +1,211 @@
-import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom";
+import {
+    BrowserRouter,
+    Routes,
+    Route,
+    useLocation,
+} from "react-router-dom";
 
-import Navbar from "./components/Navbar";
+// =========================================
+// COMPONENTS
+// =========================================
 
-import Home from "./pages/Home";
-import Doctors from "./pages/Doctors";
-import Login from "./pages/Login";
-import Register from "./pages/Register";
-import BookAppointment from "./pages/BookAppointment";
-import Contact from "./pages/Contact";
+import Navbar from "./components/Navbar/Navbar";
+import ProtectedRoute from "./components/ProtectedRoute";
+
+// =========================================
+// PAGES
+// =========================================
+
+import Home from "./pages/Home/Home";
+import Doctors from "./pages/Doctors/Doctors";
+import DoctorDetails from "./pages/DoctorDetails/DoctorDetails";
+import Login from "./pages/Login/Login";
+import Register from "./pages/Register/Register";
+import BookAppointment from "./pages/BookAppointment/BookAppointment";
+import Contact from "./pages/Contact/Contact";
+import Profile from "./pages/Profile/Profile";
+
+// =========================================
+// COMMON PAGES
+// =========================================
 
 import Terms from "./common/Terms";
 import PrivacyPolicy from "./common/PrivacyPolicy";
+
+// =========================================
+// ERROR PAGES
+// =========================================
+
 import Error400 from "./common/Error400";
 import Error401 from "./common/Error401";
 import Error403 from "./common/Error403";
 import Error404 from "./common/Error404";
 import Error500 from "./common/Error500";
 
-import ProtectedRoute from "./components/ProtectedRoute";
-
+// =========================================
+// APP CONTENT
+// =========================================
 
 function AppContent() {
+    const location = useLocation();
 
-  const location = useLocation();
+    // =========================================
+    // HIDE NAVBAR ON AUTH PAGES
+    // =========================================
 
-  // Pages where navbar should NOT appear
-  const hideNavbar =
-    location.pathname === "/login" ||
-    location.pathname === "/register";
+    const hideNavbar =
+        location.pathname === "/login" ||
+        location.pathname === "/register";
 
-  return (
-    <>
-      {!hideNavbar && <Navbar />}
+    return (
+        <>
+            {/* =================================
+                NAVBAR
+            ================================== */}
 
-      <Routes>
+            {!hideNavbar && <Navbar />}
 
-        {/* Public Pages */}
-        <Route path="/" element={<Home />} />
+            {/* =================================
+                ROUTES
+            ================================== */}
 
-        <Route path="/doctors" element={<Doctors />} />
+            <Routes>
 
-        <Route path="/login" element={<Login />} />
+                {/* =================================
+                    PUBLIC PAGES
+                ================================== */}
 
-        <Route path="/register" element={<Register />} />
+                <Route
+                    path="/"
+                    element={<Home />}
+                />
 
-        <Route path="/contact" element={<Contact />} />
+                <Route
+                    path="/doctors"
+                    element={<Doctors />}
+                />
 
+                {/* =================================
+                    DOCTOR DETAILS
+                ================================== */}
 
-        {/* Legal Pages */}
-        <Route path="/terms" element={<Terms />} />
+                <Route
+                    path="/doctors/:id"
+                    element={<DoctorDetails />}
+                />
 
-        <Route
-          path="/privacy-policy"
-          element={<PrivacyPolicy />}
-        />
+                <Route
+                    path="/contact"
+                    element={<Contact />}
+                />
 
+                {/* =================================
+                    AUTH PAGES
+                ================================== */}
 
-        {/* System / Error Pages */}
-        <Route path="/400" element={<Error400 />} />
+                <Route
+                    path="/login"
+                    element={<Login />}
+                />
 
-        <Route path="/401" element={<Error401 />} />
+                <Route
+                    path="/register"
+                    element={<Register />}
+                />
 
-        <Route path="/403" element={<Error403 />} />
+                {/* =================================
+                    PROFILE PAGE
+                ================================== */}
 
-        <Route path="/404" element={<Error404 />} />
+                <Route
+                    path="/profile"
+                    element={
+                        <ProtectedRoute>
+                            <Profile />
+                        </ProtectedRoute>
+                    }
+                />
 
-        <Route path="/500" element={<Error500 />} />
+                {/* =================================
+                    LEGAL PAGES
+                ================================== */}
 
+                <Route
+                    path="/terms"
+                    element={<Terms />}
+                />
 
-        {/* Protected Booking Page */}
-        <Route
-          path="/book/:id"
-          element={
-            <ProtectedRoute>
-              <BookAppointment />
-            </ProtectedRoute>
-          }
-        />
+                <Route
+                    path="/privacy-policy"
+                    element={<PrivacyPolicy />}
+                />
 
+                {/* =================================
+                    SYSTEM / ERROR PAGES
+                ================================== */}
 
-        {/* Unknown Route */}
-        <Route
-          path="*"
-          element={<Error404 />}
-        />
+                <Route
+                    path="/400"
+                    element={<Error400 />}
+                />
 
-      </Routes>
-    </>
-  );
+                <Route
+                    path="/401"
+                    element={<Error401 />}
+                />
+
+                <Route
+                    path="/403"
+                    element={<Error403 />}
+                />
+
+                <Route
+                    path="/404"
+                    element={<Error404 />}
+                />
+
+                <Route
+                    path="/500"
+                    element={<Error500 />}
+                />
+
+                {/* =================================
+                    PROTECTED BOOKING PAGE
+                ================================== */}
+
+                <Route
+                    path="/book/:id"
+                    element={
+                        <ProtectedRoute>
+                            <BookAppointment />
+                        </ProtectedRoute>
+                    }
+                />
+
+                {/* =================================
+                    UNKNOWN ROUTE
+                ================================== */}
+
+                <Route
+                    path="*"
+                    element={<Error404 />}
+                />
+
+            </Routes>
+        </>
+    );
 }
 
+// =========================================
+// APP
+// =========================================
 
 function App() {
-  return (
-    <BrowserRouter>
-      <AppContent />
-    </BrowserRouter>
-  );
+    return (
+        <BrowserRouter>
+            <AppContent />
+        </BrowserRouter>
+    );
 }
 
 export default App;

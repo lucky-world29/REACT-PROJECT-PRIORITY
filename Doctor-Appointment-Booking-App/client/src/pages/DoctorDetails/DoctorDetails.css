@@ -1,0 +1,566 @@
+/* =========================================
+   DOCTOR DETAILS PAGE
+========================================= */
+
+.doctor-details-page {
+    min-height: 100vh;
+    padding: 125px 24px 70px;
+    box-sizing: border-box;
+
+    background:
+        radial-gradient(
+            circle at 10% 25%,
+            rgba(94, 214, 244, 0.18),
+            transparent 28%
+        ),
+        radial-gradient(
+            circle at 90% 70%,
+            rgba(89, 194, 229, 0.14),
+            transparent 30%
+        ),
+        linear-gradient(
+            135deg,
+            #f3fbff 0%,
+            #ffffff 50%,
+            #eefaff 100%
+        );
+}
+
+
+/* =========================================
+   CONTAINER
+========================================= */
+
+.doctor-details-container {
+    width: 100%;
+    max-width: 1050px;
+    margin: 0 auto;
+}
+
+
+/* =========================================
+   BACK BUTTON
+========================================= */
+
+.doctor-back-button {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+
+    margin-bottom: 22px;
+    padding: 11px 18px;
+
+    border: 1px solid rgba(8, 167, 215, 0.15);
+    border-radius: 10px;
+
+    background: rgba(255, 255, 255, 0.85);
+
+    color: #087da9;
+
+    font-family: inherit;
+    font-size: 14px;
+    font-weight: 700;
+
+    cursor: pointer;
+
+    box-shadow:
+        0 5px 18px rgba(21, 52, 78, 0.06);
+
+    transition:
+        transform 0.2s ease,
+        box-shadow 0.2s ease,
+        background 0.2s ease;
+}
+
+.doctor-back-button:hover {
+    transform: translateX(-3px);
+
+    background: #ffffff;
+
+    box-shadow:
+        0 8px 22px rgba(21, 52, 78, 0.10);
+}
+
+
+/* =========================================
+   MAIN CARD
+========================================= */
+
+.doctor-details-card {
+    display: grid;
+    grid-template-columns: 380px 1fr;
+
+    overflow: hidden;
+
+    background: rgba(255, 255, 255, 0.94);
+
+    border: 1px solid rgba(8, 167, 215, 0.10);
+
+    border-radius: 28px;
+
+    box-shadow:
+        0 20px 60px rgba(21, 52, 78, 0.10);
+
+    backdrop-filter: blur(12px);
+}
+
+
+/* =========================================
+   IMAGE SECTION
+========================================= */
+
+.doctor-details-image-section {
+    min-height: 520px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 35px;
+
+    box-sizing: border-box;
+
+    background:
+        linear-gradient(
+            145deg,
+            #e4f8ff,
+            #c9eff9
+        );
+}
+
+
+/* =========================================
+   DOCTOR IMAGE
+========================================= */
+
+.doctor-details-image {
+    width: 100%;
+    max-width: 310px;
+    height: 390px;
+
+    object-fit: cover;
+
+    border-radius: 24px;
+
+    border: 7px solid rgba(255, 255, 255, 0.85);
+
+    box-shadow:
+        0 18px 40px rgba(8, 135, 180, 0.18);
+}
+
+
+/* =========================================
+   IMAGE PLACEHOLDER
+========================================= */
+
+.doctor-details-placeholder {
+    width: 280px;
+    height: 360px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 24px;
+
+    background:
+        linear-gradient(
+            145deg,
+            #dff7ff,
+            #bdebf5
+        );
+
+    border: 7px solid rgba(255, 255, 255, 0.85);
+
+    font-size: 100px;
+
+    box-shadow:
+        0 18px 40px rgba(8, 135, 180, 0.15);
+}
+
+
+/* =========================================
+   INFORMATION SECTION
+========================================= */
+
+.doctor-details-info {
+    padding: 55px 55px 50px;
+
+    display: flex;
+    flex-direction: column;
+
+    justify-content: center;
+}
+
+
+/* =========================================
+   SPECIALIZATION
+========================================= */
+
+.doctor-details-specialization {
+    width: fit-content;
+
+    margin-bottom: 13px;
+    padding: 7px 13px;
+
+    border-radius: 999px;
+
+    background: rgba(8, 167, 215, 0.10);
+
+    color: #0785b5;
+
+    font-size: 12px;
+    font-weight: 800;
+
+    text-transform: uppercase;
+    letter-spacing: 0.7px;
+}
+
+
+/* =========================================
+   DOCTOR NAME
+========================================= */
+
+.doctor-details-info h1 {
+    margin: 0 0 12px;
+
+    color: #15344e;
+
+    font-size: 40px;
+    line-height: 1.15;
+
+    font-weight: 850;
+
+    letter-spacing: -1px;
+}
+
+
+/* =========================================
+   RATING
+========================================= */
+
+.doctor-details-rating {
+    width: fit-content;
+
+    margin-bottom: 32px;
+    padding: 8px 13px;
+
+    border-radius: 10px;
+
+    background: #fff8e6;
+
+    color: #b77900;
+
+    font-size: 14px;
+    font-weight: 750;
+}
+
+
+/* =========================================
+   DETAILS GRID
+========================================= */
+
+.doctor-details-fields {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+
+    gap: 15px;
+
+    margin-bottom: 32px;
+}
+
+
+/* =========================================
+   DETAIL ITEM
+========================================= */
+
+.doctor-detail-item {
+    min-height: 78px;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    padding: 15px 17px;
+
+    box-sizing: border-box;
+
+    border: 1px solid #e9f2f5;
+
+    border-radius: 14px;
+
+    background: #fbfeff;
+
+    transition:
+        transform 0.2s ease,
+        box-shadow 0.2s ease;
+}
+
+.doctor-detail-item:hover {
+    transform: translateY(-2px);
+
+    box-shadow:
+        0 7px 20px rgba(21, 52, 78, 0.07);
+}
+
+
+/* =========================================
+   DETAIL LABEL
+========================================= */
+
+.doctor-detail-item span {
+    margin-bottom: 5px;
+
+    color: #7b8e9d;
+
+    font-size: 11px;
+    font-weight: 750;
+
+    text-transform: uppercase;
+    letter-spacing: 0.6px;
+}
+
+
+/* =========================================
+   DETAIL VALUE
+========================================= */
+
+.doctor-detail-item strong {
+    color: #15344e;
+
+    font-size: 14px;
+    font-weight: 700;
+
+    word-break: break-word;
+}
+
+
+/* =========================================
+   BOOK APPOINTMENT BUTTON
+========================================= */
+
+.doctor-book-button {
+    width: 100%;
+    min-height: 52px;
+
+    border: none;
+    border-radius: 13px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #078bd0,
+            #09b7c8
+        );
+
+    color: #ffffff;
+
+    font-family: inherit;
+    font-size: 15px;
+    font-weight: 800;
+
+    cursor: pointer;
+
+    box-shadow:
+        0 10px 25px rgba(8, 155, 202, 0.25);
+
+    transition:
+        transform 0.2s ease,
+        box-shadow 0.2s ease;
+}
+
+.doctor-book-button:hover {
+    transform: translateY(-2px);
+
+    box-shadow:
+        0 14px 30px rgba(8, 155, 202, 0.32);
+}
+
+.doctor-book-button:active {
+    transform: translateY(0);
+}
+
+
+/* =========================================
+   LOADING
+========================================= */
+
+.doctor-details-loading {
+    min-height: 70vh;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    color: #15344e;
+
+    font-size: 18px;
+    font-weight: 700;
+}
+
+
+/* =========================================
+   ERROR
+========================================= */
+
+.doctor-details-error {
+    width: 100%;
+    max-width: 650px;
+
+    margin: 100px auto 0;
+    padding: 20px;
+
+    box-sizing: border-box;
+
+    border-radius: 15px;
+
+    background: #fff5f5;
+
+    border: 1px solid #ffd7d7;
+
+    color: #c53d3d;
+
+    font-size: 15px;
+    font-weight: 650;
+
+    text-align: center;
+}
+
+
+/* =========================================
+   TABLET
+========================================= */
+
+@media (max-width: 900px) {
+
+    .doctor-details-page {
+        padding: 110px 20px 55px;
+    }
+
+    .doctor-details-card {
+        grid-template-columns: 320px 1fr;
+    }
+
+    .doctor-details-image-section {
+        min-height: 470px;
+        padding: 25px;
+    }
+
+    .doctor-details-image {
+        height: 350px;
+    }
+
+    .doctor-details-info {
+        padding: 40px 35px;
+    }
+
+    .doctor-details-info h1 {
+        font-size: 32px;
+    }
+
+}
+
+
+/* =========================================
+   MOBILE
+========================================= */
+
+@media (max-width: 700px) {
+
+    .doctor-details-page {
+        padding: 95px 16px 40px;
+    }
+
+    .doctor-details-container {
+        max-width: 500px;
+    }
+
+    .doctor-back-button {
+        margin-bottom: 16px;
+    }
+
+    .doctor-details-card {
+        display: flex;
+        flex-direction: column;
+        border-radius: 22px;
+    }
+
+    .doctor-details-image-section {
+        min-height: auto;
+
+        padding: 25px;
+    }
+
+    .doctor-details-image {
+        width: 210px;
+        height: 250px;
+
+        border-radius: 20px;
+    }
+
+    .doctor-details-placeholder {
+        width: 210px;
+        height: 250px;
+
+        font-size: 75px;
+    }
+
+    .doctor-details-info {
+        padding: 30px 22px 25px;
+    }
+
+    .doctor-details-info h1 {
+        font-size: 28px;
+    }
+
+    .doctor-details-rating {
+        margin-bottom: 24px;
+    }
+
+    .doctor-details-fields {
+        grid-template-columns: 1fr;
+
+        gap: 10px;
+
+        margin-bottom: 24px;
+    }
+
+}
+
+
+/* =========================================
+   SMALL MOBILE
+========================================= */
+
+@media (max-width: 380px) {
+
+    .doctor-details-page {
+        padding-left: 12px;
+        padding-right: 12px;
+    }
+
+    .doctor-details-image-section {
+        padding: 20px;
+    }
+
+    .doctor-details-image {
+        width: 180px;
+        height: 220px;
+    }
+
+    .doctor-details-placeholder {
+        width: 180px;
+        height: 220px;
+
+        font-size: 65px;
+    }
+
+    .doctor-details-info {
+        padding: 25px 18px 22px;
+    }
+
+    .doctor-details-info h1 {
+        font-size: 25px;
+    }
+
+}
